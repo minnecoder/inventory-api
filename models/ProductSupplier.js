@@ -1,17 +1,9 @@
 const Sequelize = require('sequelize');
 const db = require('../config/postgres-db');
-const Order = require('./Order');
 const Product = require('./Product');
+const Supplier = require('./Supplier');
 
-const OrderProduct = db.define('Order_Products', {
-  OrderId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Order,
-      key: 'id',
-      deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
-    },
-  },
+const ProductSupplier = db.define('Order_Products', {
   ProductId: {
     type: Sequelize.INTEGER,
     references: {
@@ -20,9 +12,18 @@ const OrderProduct = db.define('Order_Products', {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
     },
   },
-  Quantity_Ordered: {
+  SupplierId: {
     type: Sequelize.INTEGER,
+    references: {
+      model: Supplier,
+      key: 'id',
+      deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
+    },
+  },
+
+  Product_Supplier_Notes: {
+    type: Sequelize.STRING,
   },
 });
 
-module.exports = OrderProduct;
+module.exports = ProductSupplier;

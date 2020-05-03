@@ -23,9 +23,6 @@ const Product = db.define('Products', {
   Reorder_Qty: {
     type: Sequelize.INTEGER,
   },
-  SupplierId: {
-    type: Sequelize.INTEGER,
-  },
 });
 
 module.exports = Product;
