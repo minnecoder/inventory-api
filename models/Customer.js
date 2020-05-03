@@ -1,0 +1,31 @@
+const Sequelize = require('sequelize');
+const db = require('../config/postgres-db');
+
+const Customer = db.define('Customers', {
+  CustomerId: {
+    type: Sequelize.INTEGER,
+  },
+  Customer_Name: {
+    type: Sequelize.STRING,
+  },
+  Customer_Address: {
+    type: Sequelize.STRING,
+  },
+  Customer_City: {
+    type: Sequelize.STRING,
+  },
+  Customer_State: {
+    type: Sequelize.STRING,
+  },
+  Customer_Zip: {
+    type: Sequelize.STRING,
+  },
+  Customer_Phone: {
+    type: Sequelize.STRING,
+  },
+  Customer_Email: {
+    type: Sequelize.STRING,
+  },
+});
+
+module.exports = Customer;
