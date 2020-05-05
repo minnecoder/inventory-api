@@ -2,6 +2,23 @@ const Order = require('../models/Order');
 const OrderProduct = require('../models/OrderProduct');
 const Customer = require('../models/Customer');
 
+// @desc Get Orders
+// @route GET /orders
+// @access User
+exports.getOrders = async (req, res) => {
+  try {
+    const orders = await Order.findAll();
+    return res.status(200).json({
+      success: true,
+      count: orders.length,
+      data: orders,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server Error' });
+  }
+};
+
 // @desc Add Order
 // @route POST /orders
 // @access User

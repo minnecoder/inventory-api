@@ -30,5 +30,6 @@ app.use('/api/v1/orders', orders);
 app.use('/api/v1/orderproducts', orderProducts);
 app.use('/api/v1/products', products);
 app.use('/api/v1/suppliers', suppliers);
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
