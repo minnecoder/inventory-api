@@ -4,6 +4,10 @@ const Product = require('./Product');
 const Supplier = require('./Supplier');
 
 const ProductSupplier = db.define('Order_Products', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+  },
   ProductId: {
     type: Sequelize.INTEGER,
     references: {
@@ -23,6 +27,12 @@ const ProductSupplier = db.define('Order_Products', {
 
   Product_Supplier_Notes: {
     type: Sequelize.STRING,
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
   },
 });
 

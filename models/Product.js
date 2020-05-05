@@ -2,8 +2,9 @@ const Sequelize = require('sequelize');
 const db = require('../config/postgres-db');
 
 const Product = db.define('Products', {
-  ProductId: {
+  id: {
     type: Sequelize.INTEGER,
+    primaryKey: true,
   },
   Product_Name: {
     type: Sequelize.STRING,
@@ -22,6 +23,12 @@ const Product = db.define('Products', {
   },
   Reorder_Qty: {
     type: Sequelize.INTEGER,
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
   },
 });
 

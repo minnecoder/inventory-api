@@ -31,7 +31,7 @@ exports.addOrder = async (req, res) => {
     if (!customer) {
       return res.status(404).json({
         success: false,
-        error: 'CustomerId was not found',
+        error: 'Customer ID was not found',
       });
     }
     // Add order to DB

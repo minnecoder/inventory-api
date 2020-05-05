@@ -2,8 +2,9 @@ const Sequelize = require('sequelize');
 const db = require('../config/postgres-db');
 
 const Supplier = db.define('Suppliers', {
-  SupplierId: {
+  id: {
     type: Sequelize.INTEGER,
+    primaryKey: true,
   },
   Supplier_Name: {
     type: Sequelize.STRING,
@@ -25,6 +26,12 @@ const Supplier = db.define('Suppliers', {
   },
   Supplier_Email: {
     type: Sequelize.STRING,
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
   },
 });
 

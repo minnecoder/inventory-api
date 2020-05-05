@@ -3,8 +3,9 @@ const db = require('../config/postgres-db');
 const Customer = require('./Customer');
 
 const Order = db.define('Orders', {
-  OrderId: {
+  id: {
     type: Sequelize.INTEGER,
+    primaryKey: true,
   },
   CustomerId: {
     type: Sequelize.INTEGER,
@@ -19,6 +20,12 @@ const Order = db.define('Orders', {
   },
   Order_Total: {
     type: Sequelize.FLOAT,
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
   },
 });
 
