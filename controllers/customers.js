@@ -16,3 +16,20 @@ exports.getCustomers = async (req, res) => {
     return res.status(500).json({ error: 'Server Error' });
   }
 };
+
+// @desc Add Customer
+// @route POST /customers
+// @access User
+exports.addCustomer = async (req, res) => {
+  try {
+    const customer = await Customer.create(req.body);
+
+    return res.status(200).json({
+      success: true,
+      data: customer,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server Error' });
+  }
+};
