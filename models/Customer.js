@@ -5,6 +5,7 @@ const Customer = db.define('Customers', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
   },
   Customer_Name: {
     type: Sequelize.STRING,
