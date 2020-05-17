@@ -5,6 +5,7 @@ const Supplier = db.define('Suppliers', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
   },
   Supplier_Name: {
     type: Sequelize.STRING,

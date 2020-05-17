@@ -22,21 +22,7 @@ exports.getOrders = async (req, res) => {
 // @desc Add Order
 // @route POST /orders
 // @access User
-exports.addOrder = async (req, res) => {
-  const data = {
-    order: {
-      OrderId: 1,
-      CustomerId: 1,
-      Order_Status: 'Ordered',
-      Order_Total: 134.78,
-    },
-    items: [
-      { OrderId: 1, ProductId: 2, Quantity_Ordered: 4 },
-      { OrderId: 1, ProductId: 3, Quantity_Ordered: 2 },
-      { OrderId: 1, ProductId: 4, Quantity_Ordered: 1 },
-    ],
-  };
-
+exports.addOrder = async (req, res, next) => {
   try {
     // Check if CustomerId exists
     const customer = await Customer.findOne({
@@ -61,4 +47,44 @@ exports.addOrder = async (req, res) => {
     console.error(error);
     return res.status(500).json({ error: 'Server Error' });
   }
+  next();
 };
+
+// @desc Get Single Order
+// @route GET /orders/:id
+// @access User
+exports.getSingleOrder = async (req, res) => {
+  try {
+    const order = await Order.findOne({
+      where: { id: req.params.id },
+    });
+    const orderProducts = await OrderProduct.findAll({
+      where: {
+        ProductId: req.params.id,
+      },
+    });
+    console.log(order);
+    console.log(orderProducts);
+    // return res.status(200).json({
+    //   success: true,
+    //   data: order,
+    // });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server Error' });
+  }
+};
+
+// {
+//   order: {
+//     OrderId: 1,
+//     CustomerId: 1,
+//     Order_Status: 'Ordered',
+//     Order_Total: 134.78,
+//   },
+//   items: [
+//     { OrderId: 1, ProductId: 2, Quantity_Ordered: 4 },
+//     { OrderId: 1, ProductId: 3, Quantity_Ordered: 2 },
+//     { OrderId: 1, ProductId: 4, Quantity_Ordered: 1 },
+//   ],
+// };
