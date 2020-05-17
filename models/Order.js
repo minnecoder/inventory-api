@@ -6,6 +6,7 @@ const Order = db.define('Orders', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
   },
   CustomerId: {
     type: Sequelize.INTEGER,

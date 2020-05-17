@@ -7,6 +7,7 @@ const ProductSupplier = db.define('Order_Products', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
   },
   ProductId: {
     type: Sequelize.INTEGER,
