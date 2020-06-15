@@ -20,6 +20,7 @@ db.authenticate()
 
 // Routes
 const customers = require('./routes/customers');
+
 const orders = require('./routes/orders');
 const orderProducts = require('./routes/orderProducts');
 const products = require('./routes/products');
