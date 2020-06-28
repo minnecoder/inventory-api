@@ -22,7 +22,7 @@ exports.getOrders = async (req, res) => {
 // @desc Add Order
 // @route POST /orders
 // @access User
-exports.addOrder = async (req, res, next) => {
+exports.addOrder = async (req, res) => {
   try {
     // Check if CustomerId exists
     const customer = await Customer.findOne({
@@ -39,6 +39,10 @@ exports.addOrder = async (req, res, next) => {
     }
     // Add order to DB
     const order = await Order.create(req.body.order);
+
+    // Add order items to database
+    req.body.items.forEach((item) => OrderProduct.create(item));
+
     return res.status(200).json({
       success: true,
       data: order,
@@ -47,7 +51,6 @@ exports.addOrder = async (req, res, next) => {
     console.error(error);
     return res.status(500).json({ error: 'Server Error' });
   }
-  next();
 };
 
 // @desc Get Single Order
@@ -64,7 +67,7 @@ exports.getSingleOrder = async (req, res) => {
       },
     });
     console.log(order);
-    console.log(orderProducts);
+    // console.log(orderProducts);
     // return res.status(200).json({
     //   success: true,
     //   data: order,

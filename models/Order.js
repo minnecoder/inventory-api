@@ -8,6 +8,9 @@ const Order = db.define('Orders', {
     primaryKey: true,
     autoIncrement: true,
   },
+  OrderId: {
+    type: Sequelize.INTEGER,
+  },
   CustomerId: {
     type: Sequelize.INTEGER,
     references: {

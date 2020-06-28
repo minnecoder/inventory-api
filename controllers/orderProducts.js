@@ -34,5 +34,7 @@ exports.addOrderProduct = async (req, res) => {
     });
   }
 
+  // Check if items are included in the order
+
   const orderProduct = await OrderProduct.create();
 };
