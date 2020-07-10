@@ -59,35 +59,22 @@ exports.addOrder = async (req, res) => {
 exports.getSingleOrder = async (req, res) => {
   try {
     const order = await Order.findOne({
-      where: { id: req.params.id },
+      where: { OrderId: req.params.id },
     });
     const orderProducts = await OrderProduct.findAll({
       where: {
-        ProductId: req.params.id,
+        OrderId: order.OrderId,
       },
     });
-    console.log(order);
     // console.log(orderProducts);
-    // return res.status(200).json({
-    //   success: true,
-    //   data: order,
-    // });
+    // console.log(orderProducts);
+    return res.status(200).json({
+      success: true,
+      data: order,
+      orderProducts,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Server Error' });
   }
 };
-
-// {
-//   order: {
-//     OrderId: 1,
-//     CustomerId: 1,
-//     Order_Status: 'Ordered',
-//     Order_Total: 134.78,
-//   },
-//   items: [
-//     { OrderId: 1, ProductId: 2, Quantity_Ordered: 4 },
-//     { OrderId: 1, ProductId: 3, Quantity_Ordered: 2 },
-//     { OrderId: 1, ProductId: 4, Quantity_Ordered: 1 },
-//   ],
-// };
