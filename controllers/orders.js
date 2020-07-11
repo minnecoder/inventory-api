@@ -60,18 +60,31 @@ exports.getSingleOrder = async (req, res) => {
   try {
     const order = await Order.findOne({
       where: { OrderId: req.params.id },
+      attributes: ['id', 'OrderId', 'CustomerId', 'Order_Status', 'Order_Total'],
     });
     const orderProducts = await OrderProduct.findAll({
       where: {
         OrderId: order.OrderId,
       },
     });
-    // console.log(orderProducts);
-    // console.log(orderProducts);
+    const customer = await Customer.findOne({
+      where: {
+        id: order.CustomerId,
+      },
+      attributes: [
+        'Customer_Name',
+        'Customer_Address',
+        'Customer_City',
+        'Customer_State',
+        'Customer_Zip',
+        'Customer_Phone',
+        'Customer_Email',
+      ],
+    });
+
     return res.status(200).json({
       success: true,
-      data: order,
-      orderProducts,
+      data: { order, orderProducts, customer },
     });
   } catch (error) {
     console.error(error);
