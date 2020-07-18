@@ -91,3 +91,61 @@ exports.getSingleOrder = async (req, res) => {
     return res.status(500).json({ error: 'Server Error' });
   }
 };
+
+exports.updateOrder = async (req, res) => {
+  try {
+    const order = await Order.findOne({
+      where: { id: req.params.id },
+    });
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        error: 'Order not found',
+      });
+    }
+    await Order.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+      data: order,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server Error' });
+  }
+};
+
+// @desc Delete Order
+// @route DELETE /orders/:id
+// @access User
+exports.deleteOrder = async (req, res) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        error: 'Order  not found',
+      });
+    }
+    await Order.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    return res.status(200).json({
+      success: true,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server Error' });
+  }
+};
