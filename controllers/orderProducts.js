@@ -45,7 +45,7 @@ exports.getSingleOrderProduct = async (req, res) => {
 };
 
 // @desc add orderProduct
-// @route POST /orders part 2
+// @route POST /orders
 // @access User
 exports.addOrderProduct = async (req, res) => {
   try {

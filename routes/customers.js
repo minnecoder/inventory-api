@@ -11,6 +11,6 @@ const {
 const router = express.Router();
 
 router.route('/').get(getCustomers).post(addCustomer);
-router.route('/:id').get(getSingleCustomer).update(updateCustomer);
+router.route('/:id').get(getSingleCustomer).put(updateCustomer).delete(deleteCustomer);
 
 module.exports = router;
