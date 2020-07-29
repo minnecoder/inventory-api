@@ -5,14 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "jest"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
+    "dev": "nodemon index.js"
   },
   "author": "Sean Parkin",
   "license": "ISC",
@@ -33,9 +26,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.3",
-    "jest": "^26.1.0",
     "nodemon": "^2.0.3",
-    "prettier": "^2.0.5",
-    "supertest": "^4.0.2"
+    "prettier": "^2.0.5"
   }
 }
