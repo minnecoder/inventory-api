@@ -118,3 +118,21 @@ exports.deleteCustomer = async (req, res) => {
     return res.status(500).json({ error: 'Server Error' });
   }
 };
+
+exports.findCustomersByName = async (req, res) => {
+  try {
+    const customers = await Customer.findAll({
+      where: {
+        Customer_Name: req.params.custName,
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+      data: customers,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server Error' });
+  }
+};
