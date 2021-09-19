@@ -19,6 +19,9 @@ const Product = db.define('Products', {
   Product_Price: {
     type: Sequelize.FLOAT,
   },
+  On_Hand: {
+    type: Sequelize.INTEGER,
+  },
   Reorder_Level: {
     type: Sequelize.INTEGER,
   },
