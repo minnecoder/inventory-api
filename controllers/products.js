@@ -6,7 +6,16 @@ const Product = require('../models/Product');
 exports.getProducts = async (req, res) => {
   try {
     const products = await Product.findAll({
-      attributes: { exclude: ['id', 'Reorder_Level', 'Reorder_Qty', 'createdAt', 'updatedAt'] },
+      attributes: {
+        exclude: [
+          'Product_Cost',
+          'On_Hand',
+          'Reorder_Level',
+          'Reorder_Qty',
+          'createdAt',
+          'updatedAt',
+        ],
+      },
     });
     return res.status(200).json({
       success: true,
@@ -28,8 +37,24 @@ exports.getSingleProduct = async (req, res) => {
       where: {
         id: req.params.id,
       },
-      attributes: { exclude: ['id', 'Reorder_Level', 'Reorder_Qty', 'createdAt', 'updatedAt'] },
+      attributes: {
+        exclude: [
+          'Product_Cost',
+          'On_Hand',
+          'Reorder_Level',
+          'Reorder_Qty',
+          'createdAt',
+          'updatedAt',
+        ],
+      },
     });
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        error: 'Product not found',
+      });
+    }
 
     return res.status(200).json({
       success: true,
