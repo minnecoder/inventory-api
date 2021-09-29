@@ -1,6 +1,7 @@
 const Order = require('../models/Order');
 const OrderProduct = require('../models/OrderProduct');
 const Customer = require('../models/Customer');
+const Product = require('../models/Product');
 
 // @desc Get Orders
 // @route GET /orders
@@ -37,6 +38,46 @@ exports.addOrder = async (req, res) => {
         error: 'Customer ID was not found',
       });
     }
+
+    // Puts all ProductIds in array
+    const orderItems = [];
+    const orderProducts = req.body.Products;
+
+    orderProducts.forEach((product) => {
+      orderItems.push(product.id);
+    });
+
+    // Gets all of the products for the order
+    const productItems = [];
+    const products = await Product.findAll({
+      where: {
+        id: orderItems,
+      },
+    });
+
+    products.forEach((item) => {
+      productItems.push(item);
+    });
+
+    // Check if prices from website are the same as the DB
+    for (let i = 0; i < orderProducts.length; i++) {
+      if (orderProducts[i].Product_Price !== productItems[i].Product_Price) {
+        return res.status(500).json({
+          error: 'Prices are wrong',
+        });
+      }
+    }
+
+    // Check if items are available
+    products.forEach((item) => {
+      if (item.On_Hand === 0) {
+        return res.status(500).json({
+          error: 'Item is out of stock',
+        });
+      }
+      return true;
+    });
+
     // Add order to DB
     const order = await Order.create(req.body.order);
 
@@ -147,5 +188,41 @@ exports.deleteOrder = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Server Error' });
+  }
+};
+
+// @desc Update order statuses
+// @route Update /orders/status/:id
+// @access User
+exports.changeOrderStatus = async (req, res) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        error: 'Order not found',
+      });
+    }
+
+    await Order.update(req.Order_Status, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+      data: order,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      error: 'Server Error',
+    });
   }
 };
