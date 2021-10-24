@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const swaggerJsDoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+const swaggerUI = require('swagger-ui-express');
+const swaggerDoc = require('./swagger/swagger-compiled.json');
 
 const app = express();
 
@@ -20,22 +20,6 @@ db.authenticate()
     console.log('Error: ', error);
   });
 
-const swaggerOptions = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Inventory API',
-      description: 'Inventory API for e-commerce applications',
-    },
-    servers: [
-      {
-        url: 'http://localhost:4000/api/v1',
-      },
-    ],
-  },
-  apis: ['./routes/*.js'],
-};
-
 // Routes
 const customers = require('./routes/customers');
 const orders = require('./routes/orders');
@@ -48,6 +32,6 @@ app.use('/api/v1/orders', orders);
 app.use('/api/v1/orderproducts', orderProducts);
 app.use('/api/v1/products', products);
 app.use('/api/v1/suppliers', suppliers);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJsDoc(swaggerOptions)));
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
