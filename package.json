@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "swagger": "swagger-cli bundle -o ./swagger/swagger-compiled.json ./swagger/swagger.json"
   },
   "author": "Sean Parkin",
   "license": "ISC",
