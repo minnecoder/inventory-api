@@ -62,7 +62,7 @@ exports.addOrder = async (req, res) => {
     // Check if prices from website are the same as the DB
     for (let i = 0; i < orderProducts.length; i++) {
       if (orderProducts[i].Product_Price !== productItems[i].Product_Price) {
-        return res.status(500).json({
+        return res.status(501).json({
           error: 'Prices are wrong',
         });
       }
@@ -71,7 +71,7 @@ exports.addOrder = async (req, res) => {
     // Check if items are available
     products.forEach((item) => {
       if (item.On_Hand === 0) {
-        return res.status(500).json({
+        return res.status(502).json({
           error: 'Item is out of stock',
         });
       }
