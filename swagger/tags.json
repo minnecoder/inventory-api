@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Customers",
+        "description": "Customer operations"
+    },
+    {
+        "name": "Order Products",
+        "description": "Order Product operations"
+    },
+    {
+        "name": "Orders",
+        "description": "Order operations"
+    },
+    {
+        "name": "Products",
+        "description": "Product operations"
+    },
+    {
+        "name": "Product Suppliers",
+        "description": "Product Suppliers operations"
+    },
+    {
+        "name": "Suppliers",
+        "description": "Suppliers operations"
+    }
+]

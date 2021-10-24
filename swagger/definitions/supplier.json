@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "Supplier_Name": {
+            "type": "string"
+        },
+        "Supplier_Address": {
+            "type": "string"
+        },
+        "Supplier_City": {
+            "type": "string"
+        },
+        "Supplier_State": {
+            "type": "string"
+        },
+        "Supplier_Zip": {
+            "type": "string"
+        },
+        "Supplier_Phone": {
+            "type": "string"
+        },
+        "Supplier_Email": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string"
+        },
+        "updatedAt": {
+            "type": "string"
+        }
+    }
+}

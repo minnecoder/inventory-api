@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "OrderId": {
+            "type": "integer"
+        },
+        "ProductId": {
+            "type": "integer"
+        },
+        "Quantity_Ordered": {
+            "type": "integer"
+        },
+        "createdAt": {
+            "type": "string"
+        },
+        "updatedAt": {
+            "type": "string"
+        }
+    },
+    "xml": {
+        "name": "Order Product"
+    }
+}

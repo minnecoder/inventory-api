@@ -1,0 +1,17 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "$ref": "./info.json"
+    },
+    "host": "localhost:4000",
+    "basePath": "/api/v1",
+    "tags": {
+        "$ref": "./tags.json"
+    },
+    "paths": {
+        "$ref": "./paths.json"
+    },
+    "definitions": {
+        "$ref": "./definitions.json"
+    }
+}

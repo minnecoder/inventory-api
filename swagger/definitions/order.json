@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "OrderId": {
+            "type": "integer"
+        },
+        "CustomerId": {
+            "type": "integer"
+        },
+        "Order_Status": {
+            "type": "string"
+        },
+        "Order_Total": {
+            "type": "float"
+        },
+        "createdAt": {
+            "type": "string"
+        },
+        "updatedAt": {
+            "type": "string"
+        }
+    },
+    "xml": {
+        "name": "Order"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "Customer": {
+        "$ref": "./definitions/customer.json"
+    },
+    "Order": {
+        "$ref": "./definitions/order.json"
+    },
+    "OrderProduct": {
+        "$ref": "./definitions/orderProduct.json"
+    },
+    "Product": {
+        "$ref": "./definitions/product.json"
+    },
+    "ProductSupplier": {
+        "$ref": "./definitions/productSupplier.json"
+    },
+    "Supplier": {
+        "$ref": "./definitions/supplier.json"
+    }
+}

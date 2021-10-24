@@ -1,0 +1,38 @@
+{
+    "/customers": {
+        "$ref": "./paths/customer/customer.json"
+    },
+    "/customers/{id}": {
+        "$ref": "./paths/customer/{id}.json"
+    },
+    "/orders": {
+        "$ref": "./paths/order/order.json"
+    },
+    "/orders/{id}": {
+        "$ref": "./paths/order/{id}.json"
+    },
+    "/orderProducts": {
+        "$ref": "./paths/orderProducts/orderProducts.json"
+    },
+    "/orderProducts/{id}": {
+        "$ref": "./paths/orderProducts/{id}.json"
+    },
+    "/products": {
+        "$ref": "./paths/products/products.json"
+    },
+    "/products/{id}": {
+        "$ref": "./paths/products/{id}.json"
+    },
+    "/productSuppliers": {
+        "$ref": "./paths/productSuppliers/productSuppliers.json"
+    },
+    "/productSuppliers/{id}": {
+        "$ref": "./paths/productSuppliers/{id}.json"
+    },
+    "/suppliers": {
+        "$ref": "./paths/suppliers/suppliers.json"
+    },
+    "/suppliers/{id}": {
+        "$ref": "./paths/suppliers/{id}.json"
+    }
+}

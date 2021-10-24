@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "Customer_Name": {
+            "type": "string"
+        },
+        "Customer_Address": {
+            "type": "string"
+        },
+        "Customer_City": {
+            "type": "string"
+        },
+        "Customer_State": {
+            "type": "string"
+        },
+        "Customer_Zip": {
+            "type": "string"
+        },
+        "Customer_Phone": {
+            "type": "string"
+        },
+        "Customer_Email": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date"
+        }
+    },
+    "xml": {
+        "name": "Customer"
+    }
+}

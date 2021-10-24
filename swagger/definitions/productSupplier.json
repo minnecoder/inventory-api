@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "ProductId": {
+            "type": "integer"
+        },
+        "SupplierId": {
+            "type": "integer"
+        },
+        "Product_Supplier_Notes": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string"
+        },
+        "updatedAt": {
+            "type": "string"
+        }
+    }
+}

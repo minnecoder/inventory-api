@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "Product_Name": {
+            "type": "string"
+        },
+        "Product_Desc": {
+            "type": "string"
+        },
+        "Product_Cost": {
+            "type": "float"
+        },
+        "Product_Price": {
+            "type": "float"
+        },
+        "On_Hand": {
+            "type": "integer"
+        },
+        "Reorder_Level": {
+            "type": "integer"
+        },
+        "Reorder_Qty": {
+            "type": "integer"
+        },
+        "createdAt": {
+            "type": "string"
+        },
+        "updatedAt": {
+            "type": "string"
+        }
+    }
+}
