@@ -15,6 +15,6 @@
         "$ref": "./definitions/productSupplier.json"
     },
     "Supplier": {
-        "$ref": "./definitions/supplier.json"
+        "$ref": "./definitions/suppliers.json"
     }
 }
