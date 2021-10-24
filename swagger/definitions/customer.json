@@ -34,8 +34,5 @@
             "type": "string",
             "format": "date"
         }
-    },
-    "xml": {
-        "name": "Customer"
     }
 }

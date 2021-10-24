@@ -19,8 +19,5 @@
         "updatedAt": {
             "type": "string"
         }
-    },
-    "xml": {
-        "name": "Order Product"
     }
 }
