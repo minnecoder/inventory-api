@@ -1,0 +1,52 @@
+{
+    "get": {
+        "tags": [
+            "Products"
+        ],
+        "summary": "Returns all products",
+        "description": "Returns all products",
+        "responses": {
+            "200": {
+                "description": "A list of products"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "tags": [
+            "Products"
+        ],
+        "summary": "Create a new product",
+        "description": "",
+        "operationId": "addProduct",
+        "consumes": [
+            "application/json",
+            "application/xml"
+        ],
+        "produces": [
+            "application/xml",
+            "application/json"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "Product object to add",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/product.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New product is created"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

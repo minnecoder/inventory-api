@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Products"
+        ],
+        "summary": "Find product by ID",
+        "description": "Return single product",
+        "operationId": "getSingleProduct",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of product",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single product returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update product with a given ID",
+        "tags": [
+            "Products"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete product with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Product deleted"
+            },
+            "404": {
+                "description": "Failed. Product not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete product with a given ID",
+        "tags": [
+            "Products"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete product with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Product deleted"
+            },
+            "404": {
+                "description": "Failed. Product not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "get": {
+        "tags": [
+            "Order Products"
+        ],
+        "summary": "Returns all order products",
+        "description": "Returns all order products",
+        "responses": {
+            "200": {
+                "description": "A list of order products"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "tags": [
+            "Order Products"
+        ],
+        "summary": "Create a new order product",
+        "description": "",
+        "operationId": "addOrderProduct",
+        "consumes": [
+            "application/json"
+        ],
+        "produces": [
+            "application/json"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "Order product object to add",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/orderProduct.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New order product is created"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

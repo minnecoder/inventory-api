@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Product Suppliers"
+        ],
+        "summary": "Find product supplier by ID",
+        "description": "Return single product supplier",
+        "operationId": "getSingleProductSupplier",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of product supplier",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single product supplier returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update product supplier with a given ID",
+        "tags": [
+            "Product Suppliers"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete product supplier with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Product supplier deleted"
+            },
+            "404": {
+                "description": "Failed. Product supplier not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete order supplier with a given ID",
+        "tags": [
+            "Order Suppliers"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete order supplier with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Order supplier deleted"
+            },
+            "404": {
+                "description": "Failed. Order supplier not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

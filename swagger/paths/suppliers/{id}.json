@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Suppliers"
+        ],
+        "summary": "Find supplier by ID",
+        "description": "Return single supplier",
+        "operationId": "getSingleSupplier",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of supplier",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single supplier returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update supplier with a given ID",
+        "tags": [
+            "Suppliers"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete supplier with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Supplier deleted"
+            },
+            "404": {
+                "description": "Failed. Supplier not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete supplier with a given ID",
+        "tags": [
+            "Suppliers"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete supplier with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Supplier deleted"
+            },
+            "404": {
+                "description": "Failed. Supplier not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

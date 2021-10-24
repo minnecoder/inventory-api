@@ -1,0 +1,50 @@
+{
+    "get": {
+        "tags": [
+            "Suppliers"
+        ],
+        "summary": "Returns all suppliers",
+        "description": "Returns all suppliers",
+        "responses": {
+            "200": {
+                "description": "A list of suppliers"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "tags": [
+            "Suppliers"
+        ],
+        "summary": "Create a new suppliers",
+        "description": "",
+        "operationId": "addSuppliers",
+        "consumes": [
+            "application/json"
+        ],
+        "produces": [
+            "application/json"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "Suppliers object to add",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/suppliers.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New suppliers is created"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+{
+    "get": {
+        "tags": [
+            "Orders"
+        ],
+        "summary": "Find order by ID",
+        "description": "Return single order",
+        "operationId": "getSingleOrder",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of order",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single order returned successfully"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update order with a given ID",
+        "tags": [
+            "Orders"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Update order with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Order updated"
+            },
+            "404": {
+                "description": "Order not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete order with a given ID",
+        "tags": [
+            "Order"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete order with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Order deleted"
+            },
+            "404": {
+                "description": "Customer not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

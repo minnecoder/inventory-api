@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Order Products"
+        ],
+        "summary": "Find order product by ID",
+        "description": "Return single order product",
+        "operationId": "getSingleOrderProduct",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of order product",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single order product returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update order product with a given ID",
+        "tags": [
+            "Order Product"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Update customer with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Customer updated"
+            },
+            "404": {
+                "description": "Failed. Customer not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete order product with a given ID",
+        "tags": [
+            "Order Products"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete order product with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Order product deleted"
+            },
+            "404": {
+                "description": "Failed. Customer not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}
