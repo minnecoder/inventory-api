@@ -1,8 +1,12 @@
 {
     "type": "object",
+    "required": [
+        "id"
+    ],
     "properties": {
         "id": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "OrderId": {
             "type": "integer"
@@ -11,7 +15,8 @@
             "type": "integer"
         },
         "Quantity_Ordered": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "createdAt": {
             "type": "string"

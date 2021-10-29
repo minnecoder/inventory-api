@@ -12,7 +12,10 @@
                 "in": "path",
                 "description": "ID of customer",
                 "required": true,
-                "type": "integer"
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
             }
         ],
         "responses": {
@@ -38,7 +41,10 @@
                 "name": "id",
                 "required": true,
                 "description": "Delete customer with id",
-                "type": "integer"
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
             }
         ],
         "responses": {
@@ -64,7 +70,10 @@
                 "name": "id",
                 "required": true,
                 "description": "Delete customer with id",
-                "type": "integer"
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
             }
         ],
         "responses": {

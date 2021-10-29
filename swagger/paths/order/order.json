@@ -15,21 +15,15 @@
         }
     },
     "post": {
-        "tags": [
-            "Orders"
-        ],
         "summary": "Create a new order",
         "description": "Create a new order",
         "operationId": "addOrder",
-        "consumes": [
-            "application/json"
-        ],
-        "produces": [
-            "application/json"
+        "tags": [
+            "Orders"
         ],
         "parameters": [
             {
-                "in": "body",
+                "in": "path",
                 "name": "body",
                 "description": "Order object to add",
                 "required": true,

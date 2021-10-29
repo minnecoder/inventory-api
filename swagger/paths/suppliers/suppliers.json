@@ -21,15 +21,9 @@
         "summary": "Create a new suppliers",
         "description": "",
         "operationId": "addSuppliers",
-        "consumes": [
-            "application/json"
-        ],
-        "produces": [
-            "application/json"
-        ],
         "parameters": [
             {
-                "in": "body",
+                "in": "path",
                 "name": "body",
                 "description": "Suppliers object to add",
                 "required": true,

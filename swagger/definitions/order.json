@@ -1,20 +1,27 @@
 {
     "type": "object",
+    "required": [
+        "id"
+    ],
     "properties": {
         "id": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "OrderId": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "CustomerId": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "Order_Status": {
             "type": "string"
         },
         "Order_Total": {
-            "type": "float"
+            "type": "integer",
+            "format": "float"
         },
         "createdAt": {
             "type": "string"

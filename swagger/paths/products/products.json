@@ -21,17 +21,9 @@
         "summary": "Create a new product",
         "description": "",
         "operationId": "addProduct",
-        "consumes": [
-            "application/json",
-            "application/xml"
-        ],
-        "produces": [
-            "application/xml",
-            "application/json"
-        ],
         "parameters": [
             {
-                "in": "body",
+                "in": "path",
                 "name": "body",
                 "description": "Product object to add",
                 "required": true,

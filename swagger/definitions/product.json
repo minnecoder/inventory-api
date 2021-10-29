@@ -1,8 +1,12 @@
 {
     "type": "object",
+    "required": [
+        "id"
+    ],
     "properties": {
         "id": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "Product_Name": {
             "type": "string"
@@ -11,19 +15,24 @@
             "type": "string"
         },
         "Product_Cost": {
-            "type": "float"
+            "type": "integer",
+            "format": "float"
         },
         "Product_Price": {
-            "type": "float"
+            "type": "integer",
+            "format": "float"
         },
         "On_Hand": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "Reorder_Level": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "Reorder_Qty": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32"
         },
         "createdAt": {
             "type": "string"

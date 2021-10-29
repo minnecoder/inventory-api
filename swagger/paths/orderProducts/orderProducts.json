@@ -21,15 +21,9 @@
         "summary": "Create a new order product",
         "description": "Create a new order product",
         "operationId": "addOrderProduct",
-        "consumes": [
-            "application/json"
-        ],
-        "produces": [
-            "application/json"
-        ],
         "parameters": [
             {
-                "in": "body",
+                "in": "path",
                 "name": "body",
                 "description": "Order product object to add",
                 "required": true,

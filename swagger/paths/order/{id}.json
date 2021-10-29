@@ -12,7 +12,10 @@
                 "in": "path",
                 "description": "ID of order",
                 "required": true,
-                "type": "integer"
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
             }
         ],
         "responses": {
@@ -35,7 +38,10 @@
                 "name": "id",
                 "required": true,
                 "description": "Update order with id",
-                "type": "integer"
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
             }
         ],
         "responses": {
@@ -61,7 +67,10 @@
                 "name": "id",
                 "required": true,
                 "description": "Delete order with id",
-                "type": "integer"
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
             }
         ],
         "responses": {
