@@ -1,13 +1,21 @@
 {
     "get": {
+        "summary": "Returns all products",
+        "description": "Returns all products",
+        "operationId": "getProducts",
         "tags": [
             "Products"
         ],
-        "summary": "Returns all products",
-        "description": "Returns all products",
         "responses": {
             "200": {
-                "description": "A list of products"
+                "description": "A list of products",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/product.json"
+                        }
+                    }
+                }
             },
             "500": {
                 "description": "Server Error"
@@ -15,12 +23,12 @@
         }
     },
     "post": {
+        "summary": "Create a new product",
+        "description": "Create a new product",
+        "operationId": "addProduct",
         "tags": [
             "Products"
         ],
-        "summary": "Create a new product",
-        "description": "",
-        "operationId": "addProduct",
         "parameters": [
             {
                 "in": "path",
@@ -34,7 +42,14 @@
         ],
         "responses": {
             "200": {
-                "description": "New product is created"
+                "description": "New product is created",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/product.json"
+                        }
+                    }
+                }
             },
             "500": {
                 "description": "Server Error"

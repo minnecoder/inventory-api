@@ -1,11 +1,11 @@
 {
     "get": {
-        "tags": [
-            "Customers"
-        ],
         "summary": "Find customer by ID",
         "description": "Return single customer",
         "operationId": "getSingleCustomer",
+        "tags": [
+            "Customers"
+        ],
         "parameters": [
             {
                 "name": "id",
@@ -20,7 +20,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Single customer returned successfully"
+                "description": "Single customer returned successfully",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/customer.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "ID not found"
@@ -32,6 +39,7 @@
     },
     "put": {
         "summary": "Update customer with a given ID",
+        "operationId": "updateCustomer",
         "tags": [
             "Customers"
         ],
@@ -49,7 +57,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Customer deleted"
+                "description": "Customer deleted",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/customer.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "Failed. Customer not found"
@@ -61,6 +76,7 @@
     },
     "delete": {
         "summary": "Delete customer with a given ID",
+        "operationId": "deleteCustomer",
         "tags": [
             "Customers"
         ],
@@ -78,7 +94,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Customer deleted"
+                "description": "Customer deleted",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/customer.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "Failed. Customer not found"

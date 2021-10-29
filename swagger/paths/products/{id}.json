@@ -1,11 +1,11 @@
 {
     "get": {
-        "tags": [
-            "Products"
-        ],
         "summary": "Find product by ID",
         "description": "Return single product",
         "operationId": "getSingleProduct",
+        "tags": [
+            "Products"
+        ],
         "parameters": [
             {
                 "name": "id",
@@ -20,7 +20,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Single product returned successfully"
+                "description": "Single product returned successfully",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/product.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "ID not found"
@@ -32,6 +39,8 @@
     },
     "put": {
         "summary": "Update product with a given ID",
+        "description": "Update product with a given ID",
+        "operationId": "updateProduct",
         "tags": [
             "Products"
         ],
@@ -49,7 +58,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Product deleted"
+                "description": "Product deleted",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/product.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "Failed. Product not found"
@@ -61,6 +77,8 @@
     },
     "delete": {
         "summary": "Delete product with a given ID",
+        "description": "Delete product with a given ID",
+        "operationId": "deleteProduct",
         "tags": [
             "Products"
         ],
@@ -78,7 +96,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Product deleted"
+                "description": "Product deleted",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/product.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "Failed. Product not found"

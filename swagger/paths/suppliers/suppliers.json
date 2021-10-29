@@ -1,13 +1,21 @@
 {
     "get": {
+        "summary": "Returns all suppliers",
+        "description": "Returns all suppliers",
+        "operationId": "getSuppliers",
         "tags": [
             "Suppliers"
         ],
-        "summary": "Returns all suppliers",
-        "description": "Returns all suppliers",
         "responses": {
             "200": {
-                "description": "A list of suppliers"
+                "description": "A list of suppliers",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/suppliers.json"
+                        }
+                    }
+                }
             },
             "500": {
                 "description": "Server Error"
@@ -15,12 +23,12 @@
         }
     },
     "post": {
+        "summary": "Create a new suppliers",
+        "description": "Create a new suppliers",
+        "operationId": "addSuppliers",
         "tags": [
             "Suppliers"
         ],
-        "summary": "Create a new suppliers",
-        "description": "",
-        "operationId": "addSuppliers",
         "parameters": [
             {
                 "in": "path",
@@ -34,7 +42,14 @@
         ],
         "responses": {
             "200": {
-                "description": "New suppliers is created"
+                "description": "New suppliers is created",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/suppliers.json"
+                        }
+                    }
+                }
             },
             "500": {
                 "description": "Server Error"

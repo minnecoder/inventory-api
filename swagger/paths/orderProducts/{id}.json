@@ -1,11 +1,11 @@
 {
     "get": {
-        "tags": [
-            "Order Products"
-        ],
         "summary": "Find order product by ID",
         "description": "Return single order product",
         "operationId": "getSingleOrderProduct",
+        "tags": [
+            "Order Products"
+        ],
         "parameters": [
             {
                 "name": "id",
@@ -20,7 +20,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Single order product returned successfully"
+                "description": "Single order product returned successfully",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/orderProduct.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "ID not found"
@@ -32,8 +39,9 @@
     },
     "put": {
         "summary": "Update order product with a given ID",
+        "operationId": "updateOrderProduct",
         "tags": [
-            "Order Product"
+            "Order Products"
         ],
         "parameters": [
             {
@@ -49,7 +57,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Customer updated"
+                "description": "Customer updated",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/orderProduct.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "Failed. Customer not found"
@@ -61,6 +76,7 @@
     },
     "delete": {
         "summary": "Delete order product with a given ID",
+        "operationId": "deleteOrderProduct",
         "tags": [
             "Order Products"
         ],
@@ -78,7 +94,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Order product deleted"
+                "description": "Order product deleted",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/orderProduct.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "Failed. Customer not found"

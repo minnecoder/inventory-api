@@ -1,11 +1,11 @@
 {
     "get": {
-        "tags": [
-            "Suppliers"
-        ],
         "summary": "Find supplier by ID",
         "description": "Return single supplier",
         "operationId": "getSingleSupplier",
+        "tags": [
+            "Suppliers"
+        ],
         "parameters": [
             {
                 "name": "id",
@@ -20,7 +20,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Single supplier returned successfully"
+                "description": "Single supplier returned successfully",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/suppliers.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "ID not found"
@@ -32,6 +39,8 @@
     },
     "put": {
         "summary": "Update supplier with a given ID",
+        "description": "Update supplier with a given ID",
+        "operationId": "updateSupplier",
         "tags": [
             "Suppliers"
         ],
@@ -49,7 +58,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Supplier deleted"
+                "description": "Supplier deleted",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/suppliers.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "Failed. Supplier not found"
@@ -61,6 +77,8 @@
     },
     "delete": {
         "summary": "Delete supplier with a given ID",
+        "description": "Delete supplier with a given ID",
+        "operationId": "deleteSupplier",
         "tags": [
             "Suppliers"
         ],
@@ -78,7 +96,14 @@
         ],
         "responses": {
             "200": {
-                "description": "Supplier deleted"
+                "description": "Supplier deleted",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/suppliers.json"
+                        }
+                    }
+                }
             },
             "404": {
                 "description": "Failed. Supplier not found"

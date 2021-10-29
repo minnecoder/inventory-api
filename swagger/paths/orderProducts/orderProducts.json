@@ -1,13 +1,21 @@
 {
     "get": {
+        "summary": "Returns all order products",
+        "description": "Returns all order products",
+        "operationId": "getOrderProducts",
         "tags": [
             "Order Products"
         ],
-        "summary": "Returns all order products",
-        "description": "Returns all order products",
         "responses": {
             "200": {
-                "description": "A list of order products"
+                "description": "A list of order products",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/orderProduct.json"
+                        }
+                    }
+                }
             },
             "500": {
                 "description": "Server Error"
@@ -15,12 +23,12 @@
         }
     },
     "post": {
-        "tags": [
-            "Order Products"
-        ],
         "summary": "Create a new order product",
         "description": "Create a new order product",
         "operationId": "addOrderProduct",
+        "tags": [
+            "Order Products"
+        ],
         "parameters": [
             {
                 "in": "path",
@@ -34,7 +42,14 @@
         ],
         "responses": {
             "200": {
-                "description": "New order product is created"
+                "description": "New order product is created",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/orderProduct.json"
+                        }
+                    }
+                }
             },
             "500": {
                 "description": "Server Error"
