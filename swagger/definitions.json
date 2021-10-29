@@ -5,13 +5,13 @@
     "Order": {
         "$ref": "./definitions/order.json"
     },
-    "OrderProduct": {
+    "Order Product": {
         "$ref": "./definitions/orderProduct.json"
     },
     "Product": {
         "$ref": "./definitions/product.json"
     },
-    "ProductSupplier": {
+    "Product Supplier": {
         "$ref": "./definitions/productSupplier.json"
     },
     "Supplier": {
