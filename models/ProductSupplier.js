@@ -3,7 +3,7 @@ const db = require('../config/postgres-db');
 const Product = require('./Product');
 const Supplier = require('./Supplier');
 
-const ProductSupplier = db.define('Order_Products', {
+const ProductSupplier = db.define('Product_Suppliers', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
