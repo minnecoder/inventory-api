@@ -7,7 +7,9 @@ const Product = require('../models/Product');
 // @access User
 exports.getOrderProducts = async (req, res) => {
   try {
-    const orderProducts = await OrderProduct.findAll();
+    const orderProducts = await OrderProduct.findAll({
+      include: [Order, Product],
+    });
     return res.status(200).json({
       success: true,
       count: orderProducts.length,
@@ -30,6 +32,7 @@ exports.getSingleOrderProduct = async (req, res) => {
       where: {
         id: req.params.id,
       },
+      include: [Order, Product],
     });
 
     return res.status(200).json({
