@@ -7,7 +7,9 @@ const Supplier = require('../models/Supplier');
 // @access User
 exports.getProductSuppliers = async (req, res) => {
   try {
-    const productSuppliers = await ProductSupplier.findAll();
+    const productSuppliers = await ProductSupplier.findAll({
+      include: [Product, Supplier],
+    });
     return res.status(200).json({
       success: true,
       count: productSuppliers.length,
@@ -27,6 +29,7 @@ exports.getSingleProductSupplier = async (req, res) => {
       where: {
         id: req.params.id,
       },
+      include: [Product, Supplier],
     });
     return res.status(200).json({
       success: true,
