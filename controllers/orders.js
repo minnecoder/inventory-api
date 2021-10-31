@@ -41,7 +41,7 @@ exports.addOrder = async (req, res) => {
 
     // Puts all ProductIds in array
     const orderItems = [];
-    const orderProducts = req.body.Products;
+    const orderProducts = req.body.products;
 
     orderProducts.forEach((product) => {
       orderItems.push(product.id);
@@ -78,11 +78,20 @@ exports.addOrder = async (req, res) => {
       return true;
     });
 
-    // Add order to DB
-    const order = await Order.create(req.body.order);
+    // Add order to DB and get current order ID
+    let newOrderId = '';
+    const order = await Order.create(req.body.order).then((result) => {
+      newOrderId = result.id;
+    });
 
     // Add order items to database
-    req.body.items.forEach((item) => OrderProduct.create(item));
+    req.body.products.forEach((product) =>
+      OrderProduct.create({
+        OrderId: newOrderId,
+        ProductId: product.id,
+        Quantity_Ordered: product.Quantity_Ordered,
+      })
+    );
 
     return res.status(200).json({
       success: true,
