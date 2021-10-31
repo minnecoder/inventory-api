@@ -37,4 +37,9 @@ const ProductSupplier = db.define('Product_Suppliers', {
   },
 });
 
+Product.hasMany(ProductSupplier);
+ProductSupplier.belongsTo(Product);
+Supplier.hasMany(ProductSupplier);
+ProductSupplier.belongsTo(Supplier);
+
 module.exports = ProductSupplier;
