@@ -36,4 +36,9 @@ const OrderProduct = db.define('Order_Products', {
   },
 });
 
+Order.hasMany(OrderProduct);
+OrderProduct.belongsTo(Order);
+Product.hasMany(OrderProduct);
+OrderProduct.belongsTo(Product);
+
 module.exports = OrderProduct;
