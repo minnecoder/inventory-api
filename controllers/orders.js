@@ -56,7 +56,6 @@ exports.addOrder = async (req, res) => {
     });
 
     products.forEach((item) => {
-      console.log(item);
       productItems.push(item);
     });
 
