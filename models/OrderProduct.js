@@ -28,6 +28,9 @@ const OrderProduct = db.define('Order_Products', {
   Quantity_Ordered: {
     type: Sequelize.INTEGER,
   },
+  Product_Status: {
+    type: Sequelize.STRING,
+  },
   createdAt: {
     type: Sequelize.DATE,
   },
