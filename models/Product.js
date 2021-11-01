@@ -22,9 +22,11 @@ const Product = db.define('Products', {
   On_Hand: {
     type: Sequelize.INTEGER,
   },
+  // When item hits this level a reorder is triggered
   Reorder_Level: {
     type: Sequelize.INTEGER,
   },
+  // The number of items to order during a reorder
   Reorder_Qty: {
     type: Sequelize.INTEGER,
   },
