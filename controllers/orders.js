@@ -56,11 +56,12 @@ exports.addOrder = async (req, res) => {
     });
 
     products.forEach((item) => {
+      console.log(item);
       productItems.push(item);
     });
 
     // Check if prices from website are the same as the DB
-    for (let i = 0; i < orderProducts.length; i++) {
+    for (let i = 0; i < orderProducts.length; i += 1) {
       if (orderProducts[i].Product_Price !== productItems[i].Product_Price) {
         return res.status(501).json({
           error: 'Prices are wrong',
@@ -68,10 +69,11 @@ exports.addOrder = async (req, res) => {
       }
     }
 
-    // Check if items are available
+    // Check if items are available, if not sends back id and error message
     products.forEach((item) => {
       if (item.On_Hand === 0) {
         return res.status(502).json({
+          id: item.id,
           error: 'Item is out of stock',
         });
       }
