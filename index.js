@@ -27,6 +27,7 @@ const orderProducts = require('./routes/orderProducts');
 const products = require('./routes/products');
 const suppliers = require('./routes/suppliers');
 const productSuppliers = require('./routes/productSuppliers');
+const productReviews = require("./routes/productReviews")
 
 app.use('/api/v1/customers', customers);
 app.use('/api/v1/orders', orders);
@@ -34,6 +35,7 @@ app.use('/api/v1/orderproducts', orderProducts);
 app.use('/api/v1/products', products);
 app.use('/api/v1/suppliers', suppliers);
 app.use('/api/v1/productSuppliers', productSuppliers);
+app.use("/api/v1/productreviews", productReviews)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
