@@ -1,11 +1,15 @@
 const ProductReview = require("../models/ProductReview")
+const Product = require('../models/Product')
+const User = require('../models/User')
 
 // @desc Get all Product Reviews
 // @route GET /productreviews
 // @access User
 exports.getProductReviews = async (req, res) => {
     try {
-        const reviews = await ProductReview.findAll()
+        const reviews = await ProductReview.findAll({
+            include: [Product, User]
+        })
         return res.status(200).json({
             success: true,
             count: reviews.length,
@@ -44,7 +48,8 @@ exports.getSingleProductReview = async (req, res) => {
         const review = await ProductReview.findOne({
             where: {
                 id: req.params.id
-            }
+            },
+            include: [Product, User]
         })
 
         if (!review) {
