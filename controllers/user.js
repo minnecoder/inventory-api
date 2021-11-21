@@ -125,3 +125,64 @@ exports.getSingleUser = async (req, res) => {
         return res.status(500).json({ error: "Server Error" })
     }
 }
+
+exports.updateUser = async (req, res) => {
+    try {
+        const user = await User.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                error: "User not found"
+            })
+        }
+        await User.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+        return res.status(200).json({
+            success: true,
+            data: user
+        })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({
+            error: "Server Error"
+        })
+    }
+}
+
+exports.deleteUser = async (req, res) => {
+    try {
+        const user = await User.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                error: 'User not found'
+            })
+        }
+        await User.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+
+        return res.status(200).json({
+            success: true,
+            data: user
+        })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({
+            error: "Server Error"
+        })
+    }
+}
