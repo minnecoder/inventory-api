@@ -30,7 +30,7 @@
                 }
             },
             "404": {
-                "description": "ID not found"
+                "description": "Customer not found"
             },
             "500": {
                 "description": "Server Error"
@@ -48,7 +48,7 @@
                 "in": "path",
                 "name": "id",
                 "required": true,
-                "description": "Delete customer with id",
+                "description": "Update customer with id",
                 "schema": {
                     "type": "integer",
                     "format": "int32"
@@ -57,7 +57,7 @@
         ],
         "responses": {
             "200": {
-                "description": "Customer deleted",
+                "description": "Customer updated",
                 "content": {
                     "application/json": {
                         "schema": {
@@ -67,7 +67,7 @@
                 }
             },
             "404": {
-                "description": "Failed. Customer not found"
+                "description": "Customer not found"
             },
             "500": {
                 "description": "Server Error"
@@ -104,7 +104,7 @@
                 }
             },
             "404": {
-                "description": "Failed. Customer not found"
+                "description": "Customer not found"
             },
             "500": {
                 "description": "Server Error"

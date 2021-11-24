@@ -51,6 +51,12 @@
                     }
                 }
             },
+            "404": {
+                "description": "Product not found"
+            },
+            "405": {
+                "description": "Supplier not found"
+            },
             "500": {
                 "description": "Server Error"
             }

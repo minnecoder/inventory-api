@@ -51,6 +51,12 @@
                     }
                 }
             },
+            "400": {
+                "description": "Email address already exists"
+            },
+            "401": {
+                "description": "User name already exists"
+            },
             "500": {
                 "description": "Server Error"
             }

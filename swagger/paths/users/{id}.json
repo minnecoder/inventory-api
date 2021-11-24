@@ -48,7 +48,7 @@
                 "in": "path",
                 "name": "id",
                 "required": true,
-                "description": "Delete user with id",
+                "description": "Update user with id",
                 "schema": {
                     "type": "integer",
                     "format": "int32"
@@ -57,7 +57,7 @@
         ],
         "responses": {
             "200": {
-                "description": "User deleted",
+                "description": "User updated",
                 "content": {
                     "application/json": {
                         "schema": {

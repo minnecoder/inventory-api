@@ -102,7 +102,7 @@
             }
           },
           "404": {
-            "description": "ID not found"
+            "description": "Customer not found"
           },
           "500": {
             "description": "Server Error"
@@ -120,7 +120,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "description": "Delete customer with id",
+            "description": "Update customer with id",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -129,7 +129,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Customer deleted",
+            "description": "Customer updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -139,7 +139,7 @@
             }
           },
           "404": {
-            "description": "Failed. Customer not found"
+            "description": "Customer not found"
           },
           "500": {
             "description": "Server Error"
@@ -176,7 +176,7 @@
             }
           },
           "404": {
-            "description": "Failed. Customer not found"
+            "description": "Customer not found"
           },
           "500": {
             "description": "Server Error"
@@ -283,6 +283,9 @@
               }
             }
           },
+          "404": {
+            "description": "Order not found"
+          },
           "500": {
             "description": "Server Error"
           }
@@ -353,7 +356,7 @@
             }
           },
           "404": {
-            "description": "Customer not found"
+            "description": "Order not found"
           },
           "500": {
             "description": "Server Error"
@@ -414,6 +417,12 @@
               }
             }
           },
+          "404": {
+            "description": "Order Id not found"
+          },
+          "405": {
+            "description": "Product Id not found"
+          },
           "500": {
             "description": "Server Error"
           }
@@ -452,7 +461,7 @@
             }
           },
           "404": {
-            "description": "ID not found"
+            "description": "Order product not found"
           },
           "500": {
             "description": "Server Error"
@@ -470,7 +479,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "description": "Update customer with id",
+            "description": "Update order product with id",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -479,7 +488,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Customer updated",
+            "description": "Order product updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -489,7 +498,7 @@
             }
           },
           "404": {
-            "description": "Failed. Customer not found"
+            "description": "Order product not found"
           },
           "500": {
             "description": "Server Error"
@@ -526,7 +535,7 @@
             }
           },
           "404": {
-            "description": "Failed. Customer not found"
+            "description": "Order product not found"
           },
           "500": {
             "description": "Server Error"
@@ -625,7 +634,7 @@
             }
           },
           "404": {
-            "description": "ID not found"
+            "description": "Product not found"
           },
           "500": {
             "description": "Server Error"
@@ -644,7 +653,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "description": "Delete product with id",
+            "description": "Update product with id",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -653,7 +662,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Product deleted",
+            "description": "Product updated",
             "content": {
               "application/json": {
                 "schema": {
@@ -663,7 +672,7 @@
             }
           },
           "404": {
-            "description": "Failed. Product not found"
+            "description": "Product not found"
           },
           "500": {
             "description": "Server Error"
@@ -701,7 +710,7 @@
             }
           },
           "404": {
-            "description": "Failed. Product not found"
+            "description": "Product not found"
           },
           "500": {
             "description": "Server Error"
@@ -936,6 +945,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "405": {
+            "description": "Supplier not found"
           },
           "500": {
             "description": "Server Error"
@@ -1287,6 +1302,12 @@
               }
             }
           },
+          "400": {
+            "description": "Email address already exists"
+          },
+          "401": {
+            "description": "User name already exists"
+          },
           "500": {
             "description": "Server Error"
           }
@@ -1343,7 +1364,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "description": "Delete user with id",
+            "description": "Update user with id",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1352,7 +1373,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User deleted",
+            "description": "User updated",
             "content": {
               "application/json": {
                 "schema": {

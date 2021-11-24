@@ -51,6 +51,12 @@
                     }
                 }
             },
+            "404": {
+                "description": "Order Id not found"
+            },
+            "405": {
+                "description": "Product Id not found"
+            },
             "500": {
                 "description": "Server Error"
             }
