@@ -113,6 +113,12 @@ exports.getSingleOrder = async (req, res) => {
       where: { OrderId: req.params.id },
       attributes: ['id', 'OrderId', 'CustomerId', 'Order_Status', 'Order_Total'],
     });
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        error: "Order not found"
+      })
+    }
     const orderProducts = await OrderProduct.findAll({
       where: {
         OrderId: order.OrderId,

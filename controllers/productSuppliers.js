@@ -31,6 +31,12 @@ exports.getSingleProductSupplier = async (req, res) => {
       },
       include: [Product, Supplier],
     });
+    if (!productSupplier) {
+      return res.status(404).json({
+        success: false,
+        error: "Product supplier not found"
+      })
+    }
     return res.status(200).json({
       success: true,
       data: productSupplier,
@@ -65,7 +71,7 @@ exports.addProductSupplier = async (req, res) => {
     });
 
     if (!supplier) {
-      return res.status(404).json({
+      return res.status(405).json({
         success: false,
         error: 'Supplier not found',
       });

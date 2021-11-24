@@ -24,7 +24,7 @@ exports.registerUser = async (req, res) => {
     })
     if (userExists) {
         // TODO Change before going into production
-        return res.status(400).send("User name already exists")
+        return res.status(401).send("User name already exists")
     }
 
     // Generate hashed password

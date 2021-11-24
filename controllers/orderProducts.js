@@ -34,6 +34,12 @@ exports.getSingleOrderProduct = async (req, res) => {
       },
       include: [Order, Product],
     });
+    if (!orderProduct) {
+      return res.status(404).json({
+        success: false,
+        error: "Order product not found"
+      })
+    }
 
     return res.status(200).json({
       success: true,
@@ -62,7 +68,7 @@ exports.addOrderProduct = async (req, res) => {
     if (!order) {
       return res.status(404).json({
         success: false,
-        error: 'OrderId was not found',
+        error: 'Order Id not found',
       });
     }
 
@@ -74,9 +80,9 @@ exports.addOrderProduct = async (req, res) => {
     });
 
     if (!product) {
-      return res.status(404).json({
+      return res.status(405).json({
         success: false,
-        error: 'ProductId was not found',
+        error: 'Product Id not found',
       });
     }
 
