@@ -16,11 +16,19 @@
         "description": "Product operations"
     },
     {
+        "name": "Product Reviews",
+        "description": "Product Review operations"
+    },
+    {
         "name": "Product Suppliers",
         "description": "Product Suppliers operations"
     },
     {
         "name": "Suppliers",
         "description": "Suppliers operations"
+    },
+    {
+        "name": "Users",
+        "description": "Users operations"
     }
 ]

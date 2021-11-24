@@ -1,0 +1,116 @@
+{
+    "get": {
+        "summary": "Find product review by ID",
+        "description": "Return single product review",
+        "operationId": "getSingleProductReview",
+        "tags": [
+            "Product Review"
+        ],
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of product review",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single product review returned successfully",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/productReview.json"
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Product review not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update product review with a given ID",
+        "description": "Update product review with a given ID",
+        "operationId": "updateProductReview",
+        "tags": [
+            "Product Review"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Update product review with id",
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Product review updated",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/productReview.json"
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Product review not found"
+            },
+            "500": {
+                "description": "Server error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete product review with a given ID",
+        "description": "Delete product review with a given ID",
+        "operationId": "deleteProductReview",
+        "tags": [
+            "Product Review"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete product review with id",
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Product review delete",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/productReview.json"
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Product review not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

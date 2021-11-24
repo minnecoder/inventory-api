@@ -1,0 +1,59 @@
+{
+    "get": {
+        "summary": "Returns all users",
+        "description": "Returns all users",
+        "tags": [
+            "Users"
+        ],
+        "responses": {
+            "200": {
+                "description": "A list of users",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/user.json"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "summary": "Create a new user",
+        "description": "Create a new user",
+        "operationId": "addUser",
+        "tags": [
+            "Users"
+        ],
+        "parameters": [
+            {
+                "name": "body",
+                "in": "path",
+                "description": "User object to add",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New user is created",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/user.json"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

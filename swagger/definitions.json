@@ -11,10 +11,16 @@
     "Product": {
         "$ref": "./definitions/product.json"
     },
+    "Product Review": {
+        "$ref": "./definitions/productReview.json"
+    },
     "Product Supplier": {
         "$ref": "./definitions/productSupplier.json"
     },
     "Supplier": {
         "$ref": "./definitions/suppliers.json"
+    },
+    "User": {
+        "$ref": "./definitions/user.json"
     }
 }

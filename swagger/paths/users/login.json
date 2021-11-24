@@ -1,0 +1,32 @@
+{
+    "post": {
+        "summary": "Login user",
+        "description": "Login user",
+        "operationId": "loginUser",
+        "tags": [
+            "Users"
+        ],
+        "parameters": [
+            {
+                "name": "body",
+                "in": "path",
+                "description": "User name",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        ],
+        "responses": {
+            "401": {
+                "description": "User name not found"
+            },
+            "402": {
+                "description": "Password is incorrect"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

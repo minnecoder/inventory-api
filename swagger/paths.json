@@ -23,6 +23,12 @@
     "/products/{id}": {
         "$ref": "./paths/products/{id}.json"
     },
+    "/productReviews": {
+        "$ref": "./paths/productReviews/productReviews.json"
+    },
+    "/productReviews/{id}": {
+        "$ref": "./paths/productReviews/{id}.json"
+    },
     "/productSuppliers": {
         "$ref": "./paths/productSuppliers/productSuppliers.json"
     },
@@ -34,5 +40,14 @@
     },
     "/suppliers/{id}": {
         "$ref": "./paths/suppliers/{id}.json"
+    },
+    "/users": {
+        "$ref": "./paths/users/users.json"
+    },
+    "/users/{id}": {
+        "$ref": "./paths/users/{id}.json"
+    },
+    "/users/login": {
+        "$ref": "./paths/users/login.json"
     }
 }

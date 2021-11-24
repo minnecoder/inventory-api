@@ -1,0 +1,59 @@
+{
+    "get": {
+        "summary": "Returns all product reviews",
+        "description": "Returns all product reviews",
+        "tags": [
+            "Product Review"
+        ],
+        "responses": {
+            "200": {
+                "description": "A list of product reviews",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/productReview.json"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "summary": "Create a new product review",
+        "description": "Create a new product review",
+        "operationId": "addProductReview",
+        "tags": [
+            "Product Review"
+        ],
+        "parameters": [
+            {
+                "name": "body",
+                "in": "path",
+                "description": "Product review object to add",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New product review is created",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../../definitions/productReview.json"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}
