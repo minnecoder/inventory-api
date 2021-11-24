@@ -61,7 +61,7 @@ exports.loginUser = async (req, res) => {
         }
     })
     if (!user) {
-        return res.status(400).json({
+        return res.status(401).json({
             error: "User name not found"
         })
     }
@@ -69,15 +69,23 @@ exports.loginUser = async (req, res) => {
     // Verify password
     const password = await bcrypt.compare(req.body.password, user.password)
     if (!password) {
-        return res.status(400).json({ error: "Password is correct" })
+        return res.status(402).json({ error: "Password is incorrect" })
     }
 
     // Create and assign token
-    const token = jwt.sign({
-        id: user.id,
-        role: user.role
-    }, process.env.JWT_SECRET)
-    return res.header("Authenticate", token).json({ token })
+    try {
+        const token = jwt.sign({
+            id: user.id,
+            role: user.role
+        }, process.env.JWT_SECRET)
+        return res.header("Authenticate", token).json({ token })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({
+            error: "Server Error"
+        })
+    }
+
 }
 
 // @desc Get all users
