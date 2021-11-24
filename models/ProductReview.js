@@ -3,7 +3,7 @@ const db = require("../config/postgres-db")
 const Product = require("./Product")
 const User = require("./User")
 
-const ProductReview = db.define("ProductReviews", {
+const ProductReview = db.define("Product_Reviews", {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
