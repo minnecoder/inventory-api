@@ -1,5 +1,5 @@
 const crypto = require('crypto')
-const { Session } = require('inspector')
+const Session = require('../models/Session')
 
 exports.createSession = async (userId, role, connection) => {
     try {
@@ -11,7 +11,7 @@ exports.createSession = async (userId, role, connection) => {
 
         await Session.create({
             session_token: sessionToken,
-            userId,
+            user_Id: userId,
             role,
             valid: true,
             user_agent: userAgent,
