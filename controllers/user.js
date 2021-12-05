@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
-const jwt = require("jsonwebtoken")
+const { createSession } = require('../helpers/createSession')
+const { refreshToken } = require('../helpers/refreshToken')
 const User = require("../models/User")
 
 // @desc Add user
@@ -71,20 +72,34 @@ exports.loginUser = async (req, res) => {
     if (!password) {
         return res.status(402).json({ error: "Password is incorrect" })
     }
-
-    // Create and assign token
-    try {
-        const token = jwt.sign({
-            id: user.id,
-            role: user.role
-        }, process.env.JWT_SECRET)
-        return res.header("Authenticate", token).json({ token })
-    } catch (error) {
-        console.error(error)
-        return res.status(500).json({
-            error: "Server Error"
-        })
+    const connectionInfo = {
+        ip: req.ip,
+        userAgent: req.headers["user-agent"]
     }
+
+    const userId = user.id
+    const { role } = user
+
+    const sessionToken = await createSession(userId, role, connectionInfo)
+
+    await refreshToken(sessionToken, userId, res)
+
+    return res.status(200).json({
+        success: true
+    })
+    // Create and assign token
+    // try {
+    //     const token = jwt.sign({
+    //         id: user.id,
+    //         role: user.role
+    //     }, process.env.JWT_SECRET)
+    //     return res.header("Authenticate", token).json({ token })
+    // } catch (error) {
+    //     console.error(error)
+    //     return res.status(500).json({
+    //         error: "Server Error"
+    //     })
+    // }
 
 }
 
