@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const swaggerUI = require('swagger-ui-express');
 const swaggerDoc = require('./swagger/swagger-compiled.json');
 
@@ -10,6 +11,7 @@ const app = express();
 app.use(cors());
 dotenv.config({ path: './config/config.env' });
 app.use(bodyParser.json());
+app.use(cookieParser())
 
 // DB Connection and Test
 const db = require('./config/postgres-db');
