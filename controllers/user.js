@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const { createSession } = require('../helpers/createSession')
 const { refreshToken } = require('../helpers/refreshToken')
+const Session = require('../models/Session')
 const User = require("../models/User")
 
 // @desc Add user
@@ -88,20 +90,6 @@ exports.loginUser = async (req, res) => {
     return res.status(200).json({
         success: true
     })
-    // Create and assign token
-    // try {
-    //     const token = jwt.sign({
-    //         id: user.id,
-    //         role: user.role
-    //     }, process.env.JWT_SECRET)
-    //     return res.header("Authenticate", token).json({ token })
-    // } catch (error) {
-    //     console.error(error)
-    //     return res.status(500).json({
-    //         error: "Server Error"
-    //     })
-    // }
-
 }
 
 // @desc Get all users
@@ -202,6 +190,36 @@ exports.deleteUser = async (req, res) => {
         return res.status(200).json({
             success: true,
             data: user
+        })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({
+            error: "Server Error"
+        })
+    }
+}
+
+exports.logoutUser = async (req, res) => {
+    const JWTSignature = process.env.JWT_SECRET
+    try {
+        if (req.cookies.refreshToken) {
+            const { refreshToken } = req.cookies
+            // Decode refresh token
+            const { sessionToken } = jwt.verify(refreshToken, JWTSignature)
+            // Delete session record from DB
+            await Session.destroy({
+                where: {
+                    session_token: sessionToken
+                }
+            })
+        }
+        // Remove Cookies
+        res
+            .clearCookie("refreshToken")
+            .clearCookie("accessToken")
+
+        return res.status(200).json({
+            success: true
         })
     } catch (error) {
         console.error(error)
