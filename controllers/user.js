@@ -10,7 +10,7 @@ exports.registerUser = async (req, res) => {
     // Check if email already exists
     const email = await User.findOne({
         where: {
-            email: req.body.email
+            Email: req.body.email
         }
     })
     if (email) {
@@ -20,7 +20,7 @@ exports.registerUser = async (req, res) => {
     // Check if user name already exists
     const userExists = await User.findOne({
         where: {
-            user_name: req.body.user_name
+            User_Name: req.body.user_name
         }
     })
     if (userExists) {
@@ -35,10 +35,10 @@ exports.registerUser = async (req, res) => {
     // Add new user
     try {
         const user = await User.create({
-            user_name: req.body.user_name,
-            email: req.body.email,
-            password: hashedPassword,
-            role: req.body.role
+            User_Name: req.body.user_name,
+            Email: req.body.email,
+            Password: hashedPassword,
+            Role: req.body.role
         })
 
         return res.status(200).json({
@@ -58,7 +58,7 @@ exports.loginUser = async (req, res) => {
     // Check if user exists
     const user = await User.findOne({
         where: {
-            user_name: req.body.user_name
+            User_Name: req.body.user_name
         }
     })
     if (!user) {
@@ -68,17 +68,18 @@ exports.loginUser = async (req, res) => {
     }
 
     // Verify password
-    const password = await bcrypt.compare(req.body.password, user.password)
+    const password = await bcrypt.compare(req.body.password, user.Password)
     if (!password) {
         return res.status(402).json({ error: "Password is incorrect" })
     }
+
     const connectionInfo = {
         ip: req.ip,
         userAgent: req.headers["user-agent"]
     }
 
     const userId = user.id
-    const { role } = user
+    const role = user.Role
 
     const sessionToken = await createSession(userId, role, connectionInfo)
 
@@ -128,7 +129,7 @@ exports.getSingleUser = async (req, res) => {
     try {
         const user = await User.findOne({
             where: {
-                user_name: req.params.user_name
+                User_Name: req.params.user_name
             }
         }).select("-password")
 
