@@ -10,7 +10,7 @@ const Session = db.define('Sessions', {
     session_token: {
         type: Sequelize.STRING
     },
-    user_Id: {
+    userId: {
         type: Sequelize.INTEGER
     },
     role: {
