@@ -1,17 +1,17 @@
-const crypto = require('crypto')
+const { randomBytes } = require('crypto')
 const Session = require('../models/Session')
 
 exports.createSession = async (userId, role, connection) => {
     try {
         // Generate session token
-        const sessionToken = crypto(43).toString("hex")
+        const sessionToken = randomBytes(43).toString("hex")
 
         // Get connection info
         const { ip, userAgent } = connection
 
         await Session.create({
             session_token: sessionToken,
-            user_Id: userId,
+            userId,
             role,
             valid: true,
             user_agent: userAgent,
@@ -21,7 +21,8 @@ exports.createSession = async (userId, role, connection) => {
         })
         return sessionToken
     } catch (error) {
-        throw new Error("Session creation failed")
+        // throw new Error("Session creation failed")
+        console.error(error)
     }
 
 }
