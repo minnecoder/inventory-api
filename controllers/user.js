@@ -83,9 +83,9 @@ exports.loginUser = async (req, res) => {
     const userId = user.id
     const role = user.Role
 
-    const sessionToken = await createSession(userId, role, connectionInfo)
+    const sessionToken = await createSession(userId, connectionInfo)
 
-    await refreshToken(sessionToken, userId, res)
+    await refreshToken(sessionToken, userId, role, res)
 
     return res.status(200).json({
         success: true
