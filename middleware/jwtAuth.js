@@ -14,8 +14,9 @@ exports.jwtAuth = async (req, res, next) => {
                 next()
                 return
             }
+            res.status(500).send("Access Denied")
         }
     } catch (error) {
-        res.status(400).send("Access Denied")
+        throw new Error("Authentication Error")
     }
 }
