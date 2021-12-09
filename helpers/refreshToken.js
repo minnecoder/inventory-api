@@ -1,9 +1,9 @@
 const { createTokens } = require("./createTokens")
 
-exports.refreshToken = async (sessionToken, userId, res) => {
+exports.refreshToken = async (sessionToken, userId, role, res) => {
     try {
         // Create Access and Refresh tokens
-        const { accessToken, refreshToken } = await createTokens(sessionToken, userId)
+        const { accessToken, refreshToken } = await createTokens(sessionToken, role, userId)
 
         // Sets refresh date to 30 days from now
         const now = new Date()
