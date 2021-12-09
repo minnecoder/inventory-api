@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 const JWTSignature = process.env.JWT_Secret
 
-exports.createTokens = async (sessionToken, userId) => {
+exports.createTokens = async (sessionToken, role, userId) => {
     try {
         // Create Refresh Token
         const refreshToken = jwt.sign(
@@ -17,6 +17,7 @@ exports.createTokens = async (sessionToken, userId) => {
             {
                 sessionToken,
                 userId,
+                role
             },
             JWTSignature
         )

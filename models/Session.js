@@ -13,9 +13,6 @@ const Session = db.define('Sessions', {
     userId: {
         type: Sequelize.INTEGER
     },
-    role: {
-        type: Sequelize.STRING
-    },
     valid: {
         type: Sequelize.BOOLEAN
     },
