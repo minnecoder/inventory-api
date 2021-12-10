@@ -77,6 +77,7 @@ exports.loginUser = async (req, res) => {
         return res.status(402).json({ error: "Password is incorrect" })
     }
 
+    // Get connection information
     const connectionInfo = {
         ip: req.ip,
         userAgent: req.headers["user-agent"]
@@ -85,8 +86,10 @@ exports.loginUser = async (req, res) => {
     const userId = user.id
     const role = user.Role
 
+    // Create session tokens
     const sessionToken = await createSession(userId, connectionInfo)
 
+    // Create access token and refresh token
     await refreshTokens(sessionToken, userId, role, res)
 
     return res.status(200).json({
