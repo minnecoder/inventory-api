@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { createSession } = require('../helpers/createSession')
-const { refreshToken } = require('../helpers/refreshToken')
+const { refreshTokens } = require('../helpers/refreshToken')
 const Session = require('../models/Session')
 const User = require("../models/User")
 
@@ -57,14 +57,15 @@ exports.registerUser = async (req, res) => {
 // @route POST /user/login
 // @access User
 exports.loginUser = async (req, res) => {
-    // Check if user exists
+    // Check if email exists
     const user = await User.findOne({
         where: {
-            User_Name: req.body.user_name
+            Email: req.body.email
         }
     })
     if (!user) {
         return res.status(401).json({
+            // TODO Change before going into production
             error: "User name not found"
         })
     }
@@ -72,6 +73,7 @@ exports.loginUser = async (req, res) => {
     // Verify password
     const password = await bcrypt.compare(req.body.password, user.Password)
     if (!password) {
+        // TODO Change before going into production
         return res.status(402).json({ error: "Password is incorrect" })
     }
 
@@ -85,7 +87,7 @@ exports.loginUser = async (req, res) => {
 
     const sessionToken = await createSession(userId, connectionInfo)
 
-    await refreshToken(sessionToken, userId, role, res)
+    await refreshTokens(sessionToken, userId, role, res)
 
     return res.status(200).json({
         success: true
