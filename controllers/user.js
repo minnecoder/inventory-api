@@ -6,7 +6,7 @@ const Session = require('../models/Session')
 const User = require("../models/User")
 
 // @desc Add user
-// @route PO/user/add
+// @route PUT /user/add
 // @access User
 exports.registerUser = async (req, res) => {
     // Check if email already exists
@@ -40,7 +40,7 @@ exports.registerUser = async (req, res) => {
             User_Name: req.body.user_name,
             Email: req.body.email,
             Password: hashedPassword,
-            Role: req.body.role
+            Role: "user"
         })
 
         return res.status(200).json({
@@ -99,7 +99,7 @@ exports.loginUser = async (req, res) => {
 
 // @desc Get all users
 // @route GET /user
-// @access User
+// @access Admin
 exports.getUsers = async (req, res) => {
     try {
         const users = await User.findAll()
@@ -117,7 +117,7 @@ exports.getUsers = async (req, res) => {
 
 // @desc Get single user
 // @route GET /user/:id
-// @access User
+// @access Admin
 exports.getSingleUser = async (req, res) => {
     try {
         const user = await User.findOne({
@@ -143,6 +143,9 @@ exports.getSingleUser = async (req, res) => {
     }
 }
 
+// @desc Update User
+// @route PUT /users/:id
+// @access Admin
 exports.updateUser = async (req, res) => {
     try {
         const user = await User.findOne({
@@ -173,6 +176,9 @@ exports.updateUser = async (req, res) => {
     }
 }
 
+// @desc Delete User
+// @route DELETE /users/:id
+// @access Admin
 exports.deleteUser = async (req, res) => {
     try {
         const user = await User.findOne({
@@ -204,6 +210,9 @@ exports.deleteUser = async (req, res) => {
     }
 }
 
+// @desc Logout User
+// @route POST /users/logout
+// @access User
 exports.logoutUser = async (req, res) => {
     const JWTSignature = process.env.JWT_SECRET
     try {

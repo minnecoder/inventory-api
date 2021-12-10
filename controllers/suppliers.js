@@ -19,7 +19,7 @@ exports.getSuppliers = async (req, res) => {
 
 // @desc Add Supplier
 // @route POST /suppliers
-// @access User
+// @access Admin
 exports.addSupplier = async (req, res) => {
   try {
     const supplier = await Supplier.create(req.body);
@@ -62,7 +62,7 @@ exports.getSingleSupplier = async (req, res) => {
 
 // @desc Update Supplier
 // @route UPDATE /suppliers/:id
-// @access User
+// @access Admin
 exports.updateSupplier = async (req, res) => {
   try {
     const supplier = await Supplier.findOne({
@@ -92,7 +92,7 @@ exports.updateSupplier = async (req, res) => {
 
 // @desc Delete Supplier
 // @route DELETE /Suppliers/:id
-// @access User
+// @access Admin
 exports.deleteSupplier = async (req, res) => {
   try {
     const supplier = await Supplier.findOne({

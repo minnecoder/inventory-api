@@ -55,7 +55,7 @@ exports.getSingleOrderProduct = async (req, res) => {
 
 // @desc add orderProduct
 // @route POST /orders
-// @access User
+// @access Admin
 exports.addOrderProduct = async (req, res) => {
   try {
     // Check if OrderId exists
@@ -102,7 +102,7 @@ exports.addOrderProduct = async (req, res) => {
 
 // @desc Update OrderProduct
 // @route UPDATE /orderProducts/:id
-// @access User
+// @access Admin
 exports.updateOrderProduct = async (req, res) => {
   try {
     const orderProduct = await OrderProduct.findOne({
@@ -132,7 +132,7 @@ exports.updateOrderProduct = async (req, res) => {
 
 // @desc Delete OrderProduct
 // @route DELETE /orderProducts/:id
-// @access User
+// @access Admin
 exports.deleteOrderProduct = async (req, res) => {
   try {
     const orderProduct = await OrderProduct.findOne({

@@ -23,6 +23,9 @@ exports.getProductSuppliers = async (req, res) => {
   }
 };
 
+// @desc Get Single Product Supplier
+// @route GET /productSupplier/:id
+// @access User
 exports.getSingleProductSupplier = async (req, res) => {
   try {
     const productSupplier = await ProductSupplier.findOne({
@@ -49,6 +52,9 @@ exports.getSingleProductSupplier = async (req, res) => {
   }
 };
 
+// @desc Add Product Supplier
+// @route POST /productSupplier
+// @access Admin
 exports.addProductSupplier = async (req, res) => {
   try {
     const product = await Product.findOne({
@@ -89,6 +95,9 @@ exports.addProductSupplier = async (req, res) => {
   }
 };
 
+// @desc Update Product Supplier
+// @route PUT /productSupplier/:id
+// @access Admin
 exports.updateProductSupplier = async (req, res) => {
   try {
     const productSupplier = await ProductSupplier.findOne({
@@ -119,6 +128,9 @@ exports.updateProductSupplier = async (req, res) => {
   }
 };
 
+// @desc Delete Product Supplier
+// @route DELETE /productSupplier/:id
+// @access Admin
 exports.deleteProductSupplier = async (req, res) => {
   try {
     const productSupplier = await ProductSupplier.findOne({

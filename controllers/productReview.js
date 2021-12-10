@@ -71,7 +71,7 @@ exports.getSingleProductReview = async (req, res) => {
 
 // @desc Update Product Review
 // @route PUT /productreviews/:id
-// @access User
+// @access Admin
 exports.updateProductReview = async (req, res) => {
     try {
         const review = await ProductReview.findOne({
@@ -102,7 +102,7 @@ exports.updateProductReview = async (req, res) => {
 }
 // @desc Delete Product Review
 // @route DELETE /productreviews/:id
-// @access User
+// @access Admin
 exports.deleteProductReview = async (req, res) => {
     try {
         const review = await ProductReview.findOne({

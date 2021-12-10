@@ -68,7 +68,7 @@ exports.getSingleProduct = async (req, res) => {
 
 // @desc Add Product
 // @route POST /products
-// @access User
+// @access Admin
 exports.addProduct = async (req, res) => {
   try {
     const customer = await Product.create(req.body);
@@ -85,7 +85,7 @@ exports.addProduct = async (req, res) => {
 
 // @desc Update Product
 // @route UPDATE /products/:id
-// @access User
+// @access Admin
 exports.updateProduct = async (req, res) => {
   try {
     const product = await Product.findOne({
@@ -115,7 +115,7 @@ exports.updateProduct = async (req, res) => {
 
 // @desc Delete Product
 // @route DELETE /products/:id
-// @access User
+// @access Admin
 exports.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findOne({

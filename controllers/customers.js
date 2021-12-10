@@ -46,7 +46,7 @@ exports.getSingleCustomer = async (req, res) => {
 
 // @desc Add Customer
 // @route POST /customers
-// @access User
+// @access Admin
 exports.addCustomer = async (req, res) => {
   try {
     const customer = await Customer.create(req.body);
@@ -90,7 +90,7 @@ exports.updateCustomer = async (req, res) => {
 
 // @desc Delete Customer
 // @route DELETE /customers/:id
-// @access User
+// @access Admin
 exports.deleteCustomer = async (req, res) => {
   try {
     const customer = await Customer.findOne({
