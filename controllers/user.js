@@ -6,7 +6,7 @@ const Session = require('../models/Session')
 const User = require("../models/User")
 
 // @desc Add user
-// @route PUT /user/add
+// @route POST /user
 // @access User
 exports.registerUser = async (req, res) => {
     // Check if email already exists
@@ -41,6 +41,54 @@ exports.registerUser = async (req, res) => {
             Email: req.body.email,
             Password: hashedPassword,
             Role: "user"
+        })
+
+        return res.status(200).json({
+            success: true,
+            data: user
+        })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({ error: "Server Error" })
+    }
+}
+
+// @desc Add admin user
+// @route POST /user/addadmin
+// @access Admin
+exports.registerAdminUser = async (req, res) => {
+    // Check if email already exists
+    const email = await User.findOne({
+        where: {
+            Email: req.body.email
+        }
+    })
+    if (email) {
+        // TODO Change before going into production
+        return res.status(400).send("Email address already exists")
+    }
+    // Check if user name already exists
+    const userExists = await User.findOne({
+        where: {
+            User_Name: req.body.user_name
+        }
+    })
+    if (userExists) {
+        // TODO Change before going into production
+        return res.status(401).send("User name already exists")
+    }
+
+    // Generate hashed password
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(req.body.password, salt)
+
+    // Add new user
+    try {
+        const user = await User.create({
+            User_Name: req.body.user_name,
+            Email: req.body.email,
+            Password: hashedPassword,
+            Role: "admin"
         })
 
         return res.status(200).json({
