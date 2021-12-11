@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { createSession } = require('../helpers/createSession')
-const { refreshTokens } = require('../helpers/refreshToken')
+const { createSession } = require('../tokens/createSession')
+const { refreshTokens } = require('../tokens/refreshToken')
 const Session = require('../models/Session')
 const User = require("../models/User")
 
