@@ -15,6 +15,10 @@ const User = db.define("Users", {
         isEmail: true,
         unique: "compositeIndex"
     },
+    Verified: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+    },
     Password: {
         type: Sequelize.STRING,
         min: 8
