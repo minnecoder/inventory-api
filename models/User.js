@@ -7,7 +7,10 @@ const User = db.define("Users", {
         primaryKey: true,
         autoIncrement: true
     },
-    User_Name: {
+    First_Name: {
+        type: Sequelize.STRING
+    },
+    Last_Name: {
         type: Sequelize.STRING
     },
     Email: {
@@ -24,7 +27,8 @@ const User = db.define("Users", {
         min: 8
     },
     Role: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: "user"
     },
     createdAt: {
         type: Sequelize.DATE
