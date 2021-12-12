@@ -121,17 +121,6 @@ exports.updateProductSupplier = async (req, res) => {
 // @access Admin
 exports.deleteProductSupplier = async (req, res) => {
   try {
-    const productSupplier = await ProductSupplier.findOne({
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!productSupplier) {
-      return res.status(404).json({
-        success: false,
-        error: 'Product Supplier not found',
-      });
-    }
     await ProductSupplier.destroy({
       where: {
         id: req.params.id,
@@ -140,7 +129,6 @@ exports.deleteProductSupplier = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: productSupplier,
     });
   } catch (error) {
     return res.status(500).json({

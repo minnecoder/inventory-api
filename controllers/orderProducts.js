@@ -125,18 +125,6 @@ exports.updateOrderProduct = async (req, res) => {
 // @access Admin
 exports.deleteOrderProduct = async (req, res) => {
   try {
-    const orderProduct = await OrderProduct.findOne({
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    if (!orderProduct) {
-      return res.status(404).json({
-        success: false,
-        error: 'Order Product not found',
-      });
-    }
     await OrderProduct.destroy({
       where: {
         id: req.params.id,

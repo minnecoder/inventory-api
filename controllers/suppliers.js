@@ -85,18 +85,6 @@ exports.updateSupplier = async (req, res) => {
 // @access Admin
 exports.deleteSupplier = async (req, res) => {
   try {
-    const supplier = await Supplier.findOne({
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    if (!supplier) {
-      return res.status(404).json({
-        success: false,
-        error: 'Supplier not found',
-      });
-    }
     await Supplier.destroy({
       where: {
         id: req.params.id,

@@ -83,18 +83,6 @@ exports.updateCustomer = async (req, res) => {
 // @access Admin
 exports.deleteCustomer = async (req, res) => {
   try {
-    const customer = await Customer.findOne({
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    if (!customer) {
-      return res.status(404).json({
-        success: false,
-        error: 'Customer not found',
-      });
-    }
     await Customer.destroy({
       where: {
         id: req.params.id,

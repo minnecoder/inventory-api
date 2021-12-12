@@ -222,17 +222,6 @@ exports.updateUser = async (req, res) => {
 // @access Admin
 exports.deleteUser = async (req, res) => {
     try {
-        const user = await User.findOne({
-            where: {
-                id: req.params.id
-            }
-        })
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                error: 'User not found'
-            })
-        }
         await User.destroy({
             where: {
                 id: req.params.id

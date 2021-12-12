@@ -93,17 +93,6 @@ exports.updateProductReview = async (req, res) => {
 // @access Admin
 exports.deleteProductReview = async (req, res) => {
     try {
-        const review = await ProductReview.findOne({
-            where: {
-                id: req.params.id
-            }
-        })
-        if (!review) {
-            return res.status(404).json({
-                success: false,
-                error: "Review not found"
-            })
-        }
         await ProductReview.destroy({
             where: {
                 id: req.params.id
