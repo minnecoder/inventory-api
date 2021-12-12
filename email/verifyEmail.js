@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+const User = require('../models/User')
 
 const { ROOT_DOMAIN, JWT_SIGNATURE } = process.env
 
@@ -22,5 +23,32 @@ exports.createVerifyEmailLink = async (email) => {
         return `https://${ROOT_DOMAIN}/verify/${URIencodedEmail}/${emailToken}`
     } catch (error) {
         console.log(error)
+    }
+}
+
+exports.validateVerifyEmail = async (email, token) => {
+    try {
+        // Create hash
+        const emailToken = await this.createVerifyEmailToken(email)
+        // Compare hash and token
+        const isValid = emailToken === token
+        if (isValid) {
+            // Change user valid to true
+            await User.findOne({
+                where: {
+                    Email: email
+                }
+            })
+            await User.update(email, {
+                where: {
+                    Email: email
+                }
+            })
+            return true
+        }
+        return false
+    } catch (error) {
+        console.error(error)
+        return false
     }
 }
