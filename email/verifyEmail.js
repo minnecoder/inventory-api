@@ -34,12 +34,7 @@ exports.validateVerifyEmail = async (email, token) => {
         const isValid = emailToken === token
         if (isValid) {
             // Change user valid to true
-            await User.findOne({
-                where: {
-                    Email: email
-                }
-            })
-            await User.update(email, {
+            await User.update({ Verified: true }, {
                 where: {
                     Email: email
                 }
