@@ -21,16 +21,6 @@ exports.registerUser = async (req, res) => {
         // TODO Change before going into production
         return res.status(400).send("Email address already exists")
     }
-    // Check if user name already exists
-    const userExists = await User.findOne({
-        where: {
-            User_Name: req.body.user_name
-        }
-    })
-    if (userExists) {
-        // TODO Change before going into production
-        return res.status(401).send("User name already exists")
-    }
 
     // Generate hashed password
     const salt = await bcrypt.genSalt(10)
@@ -39,7 +29,8 @@ exports.registerUser = async (req, res) => {
     // Add new user
     try {
         const user = await User.create({
-            User_Name: req.body.user_name,
+            First_Name: req.body.first_name,
+            Last_Name: req.body.last_name,
             Email: req.body.email,
             Password: hashedPassword,
             Role: "user"
@@ -80,16 +71,6 @@ exports.registerAdminUser = async (req, res) => {
         // TODO Change before going into production
         return res.status(400).send("Email address already exists")
     }
-    // Check if user name already exists
-    const userExists = await User.findOne({
-        where: {
-            User_Name: req.body.user_name
-        }
-    })
-    if (userExists) {
-        // TODO Change before going into production
-        return res.status(401).send("User name already exists")
-    }
 
     // Generate hashed password
     const salt = await bcrypt.genSalt(10)
@@ -98,7 +79,8 @@ exports.registerAdminUser = async (req, res) => {
     // Add new user
     try {
         const user = await User.create({
-            User_Name: req.body.user_name,
+            First_Name: req.body.first_name,
+            Last_Name: req.body.last_name,
             Email: req.body.email,
             Password: hashedPassword,
             Role: "admin"
@@ -137,7 +119,7 @@ exports.loginUser = async (req, res) => {
     if (!user) {
         return res.status(401).json({
             // TODO Change before going into production
-            error: "User name not found"
+            error: "Email not found"
         })
     }
 
