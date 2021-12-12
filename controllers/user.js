@@ -4,6 +4,8 @@ const { createSession } = require('../tokens/createSession')
 const { refreshTokens } = require('../tokens/refreshToken')
 const Session = require('../models/Session')
 const User = require("../models/User")
+const { createVerifyEmailLink } = require('../email/verifyEmail')
+const sendEmail = require('../email/email')
 
 // @desc Add user
 // @route POST /user
@@ -42,6 +44,17 @@ exports.registerUser = async (req, res) => {
             Password: hashedPassword,
             Role: "user"
         })
+
+        if (user) {
+            // Sends verification email to user
+            const emailLink = await createVerifyEmailLink(req.body.email)
+            await sendEmail({
+                to: req.body.email,
+                subject: "Verify your email address",
+                html: `<a href="${emailLink}"> Click to verify your email</a>`
+            })
+        }
+
 
         return res.status(200).json({
             success: true,
@@ -90,6 +103,16 @@ exports.registerAdminUser = async (req, res) => {
             Password: hashedPassword,
             Role: "admin"
         })
+
+        if (user) {
+            // Sends verification email to user
+            const emailLink = await createVerifyEmailLink(req.body.email)
+            await sendEmail({
+                to: req.body.email,
+                subject: "Verify your email address",
+                html: `<a href="${emailLink}"> Click to verify your email</a>`
+            })
+        }
 
         return res.status(200).json({
             success: true,
