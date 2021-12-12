@@ -100,17 +100,6 @@ exports.addProductSupplier = async (req, res) => {
 // @access Admin
 exports.updateProductSupplier = async (req, res) => {
   try {
-    const productSupplier = await ProductSupplier.findOne({
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!productSupplier) {
-      return res.status(404).json({
-        success: false,
-        error: 'Product Supplier not found',
-      });
-    }
     await ProductSupplier.update(req.body, {
       where: {
         id: req.params.id,
@@ -119,7 +108,6 @@ exports.updateProductSupplier = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: productSupplier,
     });
   } catch (error) {
     return res.status(500).json({

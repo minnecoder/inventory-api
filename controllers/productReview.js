@@ -74,17 +74,6 @@ exports.getSingleProductReview = async (req, res) => {
 // @access Admin
 exports.updateProductReview = async (req, res) => {
     try {
-        const review = await ProductReview.findOne({
-            where: {
-                id: req.params.id
-            }
-        })
-        if (!review) {
-            return res.status(404).json({
-                success: false,
-                error: "Review not found"
-            })
-        }
         await ProductReview.update(req.body, {
             where: {
                 id: req.params.id
@@ -93,7 +82,6 @@ exports.updateProductReview = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            data: review
         })
     } catch (error) {
         console.error(error)

@@ -65,15 +65,6 @@ exports.getSingleSupplier = async (req, res) => {
 // @access Admin
 exports.updateSupplier = async (req, res) => {
   try {
-    const supplier = await Supplier.findOne({
-      where: { id: req.params.id },
-    });
-    if (!supplier) {
-      return res.status(404).json({
-        success: false,
-        error: 'Supplier not found',
-      });
-    }
     await Supplier.update(req.body, {
       where: {
         id: req.params.id,
@@ -82,7 +73,6 @@ exports.updateSupplier = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: supplier,
     });
   } catch (error) {
     console.error(error);

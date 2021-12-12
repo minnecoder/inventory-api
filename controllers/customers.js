@@ -63,15 +63,6 @@ exports.addCustomer = async (req, res) => {
 
 exports.updateCustomer = async (req, res) => {
   try {
-    const customer = await Customer.findOne({
-      where: { id: req.params.id },
-    });
-    if (!customer) {
-      return res.status(404).json({
-        success: false,
-        error: 'Customer not found',
-      });
-    }
     await Customer.update(req.body, {
       where: {
         id: req.params.id,
@@ -80,7 +71,6 @@ exports.updateCustomer = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: customer,
     });
   } catch (error) {
     console.error(error);

@@ -88,15 +88,6 @@ exports.addProduct = async (req, res) => {
 // @access Admin
 exports.updateProduct = async (req, res) => {
   try {
-    const product = await Product.findOne({
-      where: { id: req.params.id },
-    });
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-        error: 'Product not found',
-      });
-    }
     await Product.update(req.body, {
       where: {
         id: req.params.id,
@@ -105,7 +96,6 @@ exports.updateProduct = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: product,
     });
   } catch (error) {
     console.error(error);
