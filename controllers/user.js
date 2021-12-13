@@ -6,6 +6,9 @@ const Session = require('../models/Session')
 const User = require("../models/User")
 const { createVerifyEmailLink } = require('../email/verifyEmail')
 const sendEmail = require('../email/email')
+const getUserFromCookies = require('../tokens/getUserFromCookies')
+const { authorizeUser, changePassword } = require('../auth/auth')
+
 
 // @desc Add user
 // @route POST /user
@@ -270,4 +273,29 @@ exports.logoutUser = async (req, res) => {
             error: "Server Error"
         })
     }
+}
+
+// @desc Change Password
+// @route POST /users/changepassword
+// @access User
+exports.changePassword = async (req, res) => {
+    try {
+        const { oldPassword, newPassword } = req.body
+
+        // Verify user login
+        const user = await getUserFromCookies(req, res)
+
+        if (user?.email) {
+            const { isAuthorized, userId } = await authorizeUser(user.email, oldPassword)
+            if (isAuthorized) {
+                await changePassword(userId, newPassword)
+                return res.status(200).send('Password has been changed')
+            }
+        }
+        return res.status(401).send()
+    } catch (error) {
+        console.error(error)
+        return res.status(401).send()
+    }
+
 }
