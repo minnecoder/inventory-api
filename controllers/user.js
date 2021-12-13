@@ -230,7 +230,6 @@ exports.deleteUser = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            data: user
         })
     } catch (error) {
         console.error(error)
