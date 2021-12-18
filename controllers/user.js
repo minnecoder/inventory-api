@@ -113,62 +113,52 @@ exports.registerAdminUser = async (req, res) => {
 // @route POST /user/login
 // @access User
 exports.loginUser = async (req, res) => {
-    // Check if email exists
-    const user = await User.findOne({
-        where: {
-            Email: req.body.email
-        }
-    })
-    if (!user) {
-        return res.status(401).json({
-            // TODO Change before going into production
-            error: "Email not found"
-        })
-    }
-
-    // Verify password
-    const password = await bcrypt.compare(req.body.password, user.Password)
-    if (!password) {
-        // TODO Change before going into production
-        return res.status(402).json({ error: "Password is incorrect" })
-    }
-
-    // Get connection information
-    const connectionInfo = {
-        ip: req.ip,
-        userAgent: req.headers["user-agent"]
-    }
-
-    const userId = user.id
-    const role = user.Role
-
-    // Create session tokens
-    const sessionToken = await createSession(userId, connectionInfo)
-
-    // Create access token and refresh token
-    await refreshTokens(sessionToken, userId, role, res)
-
-    return res.status(200).json({
-        success: true
-    })
-}
-
-// @desc Get all users
-// @route GET /user
-// @access Admin
-exports.getUsers = async (req, res) => {
     try {
-        const users = await User.findAll()
+        // Check if email exists
+        const user = await User.findOne({
+            where: {
+                Email: req.body.email
+            }
+        })
+        if (!user) {
+            return res.status(401).json({
+                // TODO Change before going into production
+                error: "Email not found"
+            })
+        }
+
+        // Verify password
+        const password = await bcrypt.compare(req.body.password, user.Password)
+        if (!password) {
+            // TODO Change before going into production
+            return res.status(402).json({ error: "Password is incorrect" })
+        }
+
+        // Get connection information
+        const connectionInfo = {
+            ip: req.ip,
+            userAgent: req.headers["user-agent"]
+        }
+
+        const userId = user.id
+        const role = user.Role
+
+        // Create session tokens
+        const sessionToken = await createSession(userId, connectionInfo)
+
+        // Create access token and refresh token
+        await refreshTokens(sessionToken, userId, role, res)
+
         return res.status(200).json({
-            success: true,
-            count: users.length,
-            data: users
+            success: true
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: "Server Error" })
+        return res.status(500).json({ error: 'Server Error' })
     }
+
 }
+
 
 
 // @desc Get single user
