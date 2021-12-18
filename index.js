@@ -7,12 +7,10 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerDoc = require('./swagger/swagger-compiled.json');
 
 const app = express();
-const corsOptions = {
-  origin: "https://blissful-brattain-5b7fe8.netlify.app/"
-}
 
 
-app.use(cors(corsOptions));
+
+app.use(cors({ origin: "https://blissful-brattain-5b7fe8.netlify.app/", credentials: true }));
 dotenv.config({ path: './config/config.env' });
 app.use(bodyParser.json());
 app.use(cookieParser())
