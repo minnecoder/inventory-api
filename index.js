@@ -10,16 +10,16 @@ const app = express();
 
 
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 dotenv.config({ path: './config/config.env' });
 app.use(bodyParser.json());
 app.use(cookieParser())
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://blissful-brattain-5b7fe8.netlify.app/");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 // DB Connection and Test
 const db = require('./config/postgres-db');
