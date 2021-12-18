@@ -159,7 +159,23 @@ exports.loginUser = async (req, res) => {
 
 }
 
+// @desc Users
+// @route GET /user
+// @access Admin
+exports.getUsers = async (req, res) => {
+    try {
+        const users = await User.find()
+        return res.status(200).json({
+            success: true,
+            count: users.length,
+            data: users
+        })
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Server Error' });
+    }
 
+}
 
 // @desc Get single user
 // @route GET /user/:id
