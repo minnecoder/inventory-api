@@ -25,25 +25,3 @@ exports.createVerifyEmailLink = async (email) => {
         console.log(error)
     }
 }
-
-exports.validateVerifyEmail = async (email, token) => {
-    try {
-        // Create hash
-        const emailToken = await this.createVerifyEmailToken(email)
-        // Compare hash and token
-        const isValid = emailToken === token
-        if (isValid) {
-            // Change user valid to true
-            await User.update({ Verified: true }, {
-                where: {
-                    Email: email
-                }
-            })
-            return true
-        }
-        return false
-    } catch (error) {
-        console.error(error)
-        return false
-    }
-}

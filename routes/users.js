@@ -9,7 +9,8 @@ const {
     updateUser,
     deleteUser,
     logoutUser,
-    changePassword
+    changePassword,
+    validateEmail
 } = require("../controllers/user")
 
 const router = express.Router()
@@ -20,5 +21,6 @@ router.route('/logout').post(logoutUser)
 router.route('/:id').get(getSingleUser).put(updateUser).delete(deleteUser)
 router.route('/addadmin').post(registerAdminUser)
 router.route('/password').post(changePassword)
+router.route('/validateemail').post(validateEmail)
 
 module.exports = router

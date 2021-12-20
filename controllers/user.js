@@ -4,7 +4,7 @@ const { createSession } = require('../tokens/createSession')
 const { refreshTokens } = require('../tokens/refreshToken')
 const Session = require('../models/Session')
 const User = require("../models/User")
-const { createVerifyEmailLink } = require('../email/verifyEmail')
+const { createVerifyEmailLink, createVerifyEmailToken } = require('../email/verifyEmail')
 const sendEmail = require('../email/email')
 const getUserFromCookies = require('../tokens/getUserFromCookies')
 const { authorizeUser, changePassword } = require('../auth/auth')
@@ -304,4 +304,31 @@ exports.changePassword = async (req, res) => {
         return res.status(401).send()
     }
 
+}
+
+// @desc Validate Email Link
+// @route POST /users/validateemail
+// @access User
+exports.validateEmail = async (req, res) => {
+    try {
+        const { email, token } = req.body
+        // Create hash
+        const emailToken = await createVerifyEmailToken(email)
+
+        // Compare hash and token
+        const isValid = emailToken === token
+        if (isValid) {
+            // Change user valid to true
+            await User.update({ Verified: true }, {
+                where: {
+                    Email: email
+                }
+            })
+            return res.sendStatus(200)
+        }
+        return res.sendStatus(401)
+    } catch (error) {
+        console.error(error)
+        return res.sendStatus(500)
+    }
 }
