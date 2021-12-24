@@ -18,13 +18,12 @@ exports.getProducts = async (req, res) => {
       },
     });
     return res.status(200).json({
-      success: true,
       count: products.length,
       data: products,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -50,19 +49,15 @@ exports.getSingleProduct = async (req, res) => {
     });
 
     if (!product) {
-      return res.status(404).json({
-        success: false,
-        error: 'Product not found',
-      });
+      return res.status(404).send('Product not found');
     }
 
     return res.status(200).json({
-      success: true,
       data: product,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -74,12 +69,11 @@ exports.addProduct = async (req, res) => {
     const customer = await Product.create(req.body);
 
     return res.status(200).json({
-      success: true,
       data: customer,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -94,12 +88,10 @@ exports.updateProduct = async (req, res) => {
       },
     });
 
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -113,11 +105,9 @@ exports.deleteProduct = async (req, res) => {
         id: req.params.id,
       },
     });
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };

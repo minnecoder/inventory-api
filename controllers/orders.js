@@ -10,13 +10,12 @@ exports.getOrders = async (req, res) => {
   try {
     const orders = await Order.findAll();
     return res.status(200).json({
-      success: true,
       count: orders.length,
       data: orders,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -33,10 +32,7 @@ exports.addOrder = async (req, res) => {
     });
 
     if (!customer) {
-      return res.status(404).json({
-        success: false,
-        error: 'Customer ID was not found',
-      });
+      return res.status(404).send('Customer was not found');
     }
 
     // Puts all ProductIds in array
@@ -62,16 +58,14 @@ exports.addOrder = async (req, res) => {
     // Check if prices from website are the same as the DB
     for (let i = 0; i < orderProducts.length; i += 1) {
       if (orderProducts[i].Product_Price !== productItems[i].Product_Price) {
-        return res.status(501).json({
-          error: 'Prices are wrong',
-        });
+        return res.status(400).send('Prices are wrong');
       }
     }
 
     // Check if items are available, if not sends back id and error message
     products.forEach((item) => {
       if (item.On_Hand === 0) {
-        return res.status(502).json({
+        return res.status(400).json({
           id: item.id,
           error: 'Item is out of stock',
         });
@@ -95,12 +89,11 @@ exports.addOrder = async (req, res) => {
     );
 
     return res.status(200).json({
-      success: true,
       data: order,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -114,10 +107,7 @@ exports.getSingleOrder = async (req, res) => {
       attributes: ['id', 'OrderId', 'CustomerId', 'Order_Status', 'Order_Total'],
     });
     if (!order) {
-      return res.status(404).json({
-        success: false,
-        error: "Order not found"
-      })
+      return res.status(404).send("Order not found")
     }
     const orderProducts = await OrderProduct.findAll({
       where: {
@@ -140,12 +130,11 @@ exports.getSingleOrder = async (req, res) => {
     });
 
     return res.status(200).json({
-      success: true,
       data: { order, orderProducts, customer },
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -160,12 +149,10 @@ exports.updateOrder = async (req, res) => {
       },
     });
 
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -179,12 +166,10 @@ exports.deleteOrder = async (req, res) => {
         id: req.params.id,
       },
     });
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -200,10 +185,7 @@ exports.changeOrderStatus = async (req, res) => {
     });
 
     if (!order) {
-      return res.status(404).json({
-        success: false,
-        error: 'Order not found',
-      });
+      return res.status(404).send('Order not found');
     }
 
     await Order.update(req.Order_Status, {
@@ -213,13 +195,10 @@ exports.changeOrderStatus = async (req, res) => {
     });
 
     return res.status(200).json({
-      success: true,
       data: order,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
-      error: 'Server Error',
-    });
+    return res.status(500).send('Server Error');
   }
 };

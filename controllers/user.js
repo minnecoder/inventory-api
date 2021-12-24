@@ -51,12 +51,11 @@ exports.registerUser = async (req, res) => {
 
 
         return res.status(200).json({
-            success: true,
             data: user
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: "Server Error" })
+        return res.status(500).send("Server Error")
     }
 }
 
@@ -100,12 +99,11 @@ exports.registerAdminUser = async (req, res) => {
         }
 
         return res.status(200).json({
-            success: true,
             data: user
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: "Server Error" })
+        return res.status(500).send("Server Error")
     }
 }
 
@@ -121,17 +119,15 @@ exports.loginUser = async (req, res) => {
             }
         })
         if (!user) {
-            return res.status(401).json({
-                // TODO Change before going into production
-                error: "Email not found"
-            })
+            // TODO Change before going into production
+            return res.status(400).send("Email not found")
         }
 
         // Verify password
         const password = await bcrypt.compare(req.body.password, user.Password)
         if (!password) {
             // TODO Change before going into production
-            return res.status(402).json({ error: "Password is incorrect" })
+            return res.status(400).send("Password is incorrect")
         }
 
         // Get connection information
@@ -149,12 +145,10 @@ exports.loginUser = async (req, res) => {
         // Create access token and refresh token
         await refreshTokens(sessionToken, userId, role, res)
 
-        return res.status(200).json({
-            success: true
-        })
+        return res.sendStatus(200)
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: 'Server Error' })
+        return res.status(500).send('Server Error')
     }
 
 }
@@ -166,13 +160,12 @@ exports.getUsers = async (req, res) => {
     try {
         const users = await User.find()
         return res.status(200).json({
-            success: true,
             count: users.length,
             data: users
         })
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Server Error' });
+        return res.status(500).send('Server Error');
     }
 
 }
@@ -189,19 +182,15 @@ exports.getSingleUser = async (req, res) => {
         }).select("-password")
 
         if (!user) {
-            return res.status(404).json({
-                success: false,
-                error: "User not found"
-            })
+            return res.status(404).send("User not found")
         }
 
         return res.status(200).json({
-            success: true,
             data: user
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: "Server Error" })
+        return res.status(500).send("Server Error")
     }
 }
 
@@ -215,14 +204,10 @@ exports.updateUser = async (req, res) => {
                 id: req.params.id
             }
         })
-        return res.status(200).json({
-            success: true,
-        })
+        return res.sendStatus(200)
     } catch (error) {
         console.error(error)
-        return res.status(500).json({
-            error: "Server Error"
-        })
+        return res.status(500).send("Server Error")
     }
 }
 
@@ -237,14 +222,10 @@ exports.deleteUser = async (req, res) => {
             }
         })
 
-        return res.status(200).json({
-            success: true,
-        })
+        return res.sendStatus(200)
     } catch (error) {
         console.error(error)
-        return res.status(500).json({
-            error: "Server Error"
-        })
+        return res.status(500).send("Server Error")
     }
 }
 
@@ -270,14 +251,10 @@ exports.logoutUser = async (req, res) => {
             .clearCookie("refreshToken")
             .clearCookie("accessToken")
 
-        return res.status(200).json({
-            success: true
-        })
+        return res.sendStatus(200)
     } catch (error) {
         console.error(error)
-        return res.status(500).json({
-            error: "Server Error"
-        })
+        return res.status(500).send("Server Error")
     }
 }
 
@@ -301,7 +278,7 @@ exports.changePassword = async (req, res) => {
         return res.status(401).send()
     } catch (error) {
         console.error(error)
-        return res.status(401).send()
+        return res.status(500).send("Server Error")
     }
 
 }
@@ -329,6 +306,6 @@ exports.validateEmail = async (req, res) => {
         return res.sendStatus(401)
     } catch (error) {
         console.error(error)
-        return res.sendStatus(500)
+        return res.status(500).send('Server Error')
     }
 }

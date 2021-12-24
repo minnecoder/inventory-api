@@ -11,15 +11,12 @@ exports.getOrderProducts = async (req, res) => {
       include: [Order, Product],
     });
     return res.status(200).json({
-      success: true,
       count: orderProducts.length,
       data: orderProducts,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
-      error: 'Server Error',
-    });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -35,21 +32,15 @@ exports.getSingleOrderProduct = async (req, res) => {
       include: [Order, Product],
     });
     if (!orderProduct) {
-      return res.status(404).json({
-        success: false,
-        error: "Order product not found"
-      })
+      return res.status(404).send("Order product not found")
     }
 
     return res.status(200).json({
-      success: true,
       data: orderProduct,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
-      error: 'Server Error',
-    });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -66,10 +57,7 @@ exports.addOrderProduct = async (req, res) => {
     });
 
     if (!order) {
-      return res.status(404).json({
-        success: false,
-        error: 'Order Id not found',
-      });
+      return res.status(404).send('Order Id not found');
     }
 
     // Check if ProductId exists
@@ -80,23 +68,17 @@ exports.addOrderProduct = async (req, res) => {
     });
 
     if (!product) {
-      return res.status(405).json({
-        success: false,
-        error: 'Product Id not found',
-      });
+      return res.status(404).send('Product Id not found');
     }
 
     const orderProduct = await OrderProduct.create(req.body);
 
     return res.status(200).json({
-      success: true,
       data: orderProduct,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({
-      error: 'Server Error',
-    });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -111,12 +93,10 @@ exports.updateOrderProduct = async (req, res) => {
       },
     });
 
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -130,11 +110,9 @@ exports.deleteOrderProduct = async (req, res) => {
         id: req.params.id,
       },
     });
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };

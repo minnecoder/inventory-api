@@ -11,15 +11,12 @@ exports.getProductReviews = async (req, res) => {
             include: [Product, User]
         })
         return res.status(200).json({
-            success: true,
             count: reviews.length,
             data: reviews
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({
-            error: "Server Error"
-        })
+        return res.status(500).send("Server Error")
     }
 }
 
@@ -31,16 +28,14 @@ exports.addProductReview = async (req, res) => {
         const review = await ProductReview.create(req.body)
 
         return res.status(200).json({
-            success: true,
             data: review
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: "Server Error" })
+        return res.status(500).send("Server Error")
     }
 }
 
-// @desc Get Single Product Review
 // @route GET /productreviews/:id
 // @access User
 exports.getSingleProductReview = async (req, res) => {
@@ -53,19 +48,15 @@ exports.getSingleProductReview = async (req, res) => {
         })
 
         if (!review) {
-            return res.status(404).json({
-                success: false,
-                error: "Review not found"
-            })
+            return res.status(404).send("Review not found")
         }
 
         return res.status(200).json({
-            success: true,
             data: review
         })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: "Server Error" })
+        return res.status(500).send("Server Error")
     }
 }
 
@@ -80,14 +71,13 @@ exports.updateProductReview = async (req, res) => {
             }
         })
 
-        return res.status(200).json({
-            success: true,
-        })
+        return res.sendStatus(200)
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: "Server Error" })
+        return res.status(500).send("Server Error")
     }
 }
+
 // @desc Delete Product Review
 // @route DELETE /productreviews/:id
 // @access Admin
@@ -98,13 +88,9 @@ exports.deleteProductReview = async (req, res) => {
                 id: req.params.id
             }
         })
-        return res.status(200).json({
-            success: true
-        })
+        return res.sendStatus(200)
     } catch (error) {
         console.error(error)
-        return res.status(500).json({
-            error: "Server Error"
-        })
+        return res.status(500).send("Server Error")
     }
 }

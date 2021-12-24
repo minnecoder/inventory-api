@@ -7,13 +7,12 @@ exports.getCustomers = async (req, res) => {
   try {
     const customers = await Customer.findAll();
     return res.status(200).json({
-      success: true,
       count: customers.length,
       data: customers,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -29,18 +28,14 @@ exports.getSingleCustomer = async (req, res) => {
     });
 
     if (!customer) {
-      return res.status(404).json({
-        success: false,
-        error: 'Customer not found',
-      });
+      return res.status(404).send('Customer not found');
     }
     return res.status(200).json({
-      success: true,
       data: customer,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -52,12 +47,11 @@ exports.addCustomer = async (req, res) => {
     const customer = await Customer.create(req.body);
 
     return res.status(200).json({
-      success: true,
       data: customer,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -69,12 +63,10 @@ exports.updateCustomer = async (req, res) => {
       },
     });
 
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -88,12 +80,10 @@ exports.deleteCustomer = async (req, res) => {
         id: req.params.id,
       },
     });
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -106,11 +96,10 @@ exports.findCustomersByName = async (req, res) => {
     });
 
     return res.status(200).json({
-      success: true,
       data: customers,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };

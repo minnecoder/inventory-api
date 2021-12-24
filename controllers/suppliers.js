@@ -7,13 +7,12 @@ exports.getSuppliers = async (req, res) => {
   try {
     const suppliers = await Supplier.findAll();
     return res.status(200).json({
-      success: true,
       count: suppliers.length,
       data: suppliers,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -25,12 +24,11 @@ exports.addSupplier = async (req, res) => {
     const supplier = await Supplier.create(req.body);
 
     return res.status(200).json({
-      success: true,
       data: supplier,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -45,18 +43,14 @@ exports.getSingleSupplier = async (req, res) => {
       },
     });
     if (!supplier) {
-      return res.status(404).json({
-        success: false,
-        error: 'Supplier not found',
-      });
+      return res.status(404).send('Supplier not found');
     }
     return res.status(200).json({
-      success: true,
       data: supplier,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -71,12 +65,10 @@ exports.updateSupplier = async (req, res) => {
       },
     });
 
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
 
@@ -90,11 +82,9 @@ exports.deleteSupplier = async (req, res) => {
         id: req.params.id,
       },
     });
-    return res.status(200).json({
-      success: true,
-    });
+    return res.sendStatus(200)
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).send('Server Error');
   }
 };
