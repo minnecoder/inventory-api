@@ -12,6 +12,7 @@ const {
     changePassword,
     validateEmail
 } = require("../controllers/user")
+const { createVerifyEmailLink } = require("../email/verifyEmail")
 
 const router = express.Router()
 
@@ -22,5 +23,6 @@ router.route('/:id').get(getSingleUser).put(updateUser).delete(deleteUser)
 router.route('/addadmin').post(registerAdminUser)
 router.route('/password').post(changePassword)
 router.route('/validateemail').post(validateEmail)
+router.route('/resendverifyemail').post(createVerifyEmailLink)
 
 module.exports = router
