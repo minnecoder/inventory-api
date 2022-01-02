@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "swagger": "swagger-cli bundle -o ./swagger/swagger-compiled.json ./swagger/swagger.json"
+    "swagger": "swagger-cli bundle -o ./swagger/swagger-compiled.json ./swagger/swagger.json",
+    "test": "jest"
   },
   "author": "Sean Parkin",
   "license": "ISC",
@@ -34,7 +35,9 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.3",
+    "jest": "^27.4.5",
     "nodemon": "^2.0.3",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "supertest": "^6.1.6"
   }
 }
