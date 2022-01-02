@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
-const db = require('../config/postgres-db');
+const dbTest = require('../utils/dbConnection').getDB
 
+const db = dbTest()
 const Customer = db.define('Customers', {
   id: {
     type: Sequelize.INTEGER,
