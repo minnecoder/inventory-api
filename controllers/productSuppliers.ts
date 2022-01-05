@@ -1,11 +1,12 @@
-const ProductSupplier = require('../models/ProductSupplier');
-const Product = require('../models/Product');
-const Supplier = require('../models/Supplier');
+import { Response, Request } from "express";
+import ProductSupplier from "../models/ProductSupplier"
+import Product from "../models/Product";
+import Supplier from "../models/Supplier";
 
 // @desc Get Product Supplier
 // @route GET /productSupplier
 // @access User
-exports.getProductSuppliers = async (req, res) => {
+export let getProductSuppliers = async (req: Request, res: Response) => {
   try {
     const productSuppliers = await ProductSupplier.findAll({
       include: [Product, Supplier],
@@ -23,7 +24,7 @@ exports.getProductSuppliers = async (req, res) => {
 // @desc Get Single Product Supplier
 // @route GET /productSupplier/:id
 // @access User
-exports.getSingleProductSupplier = async (req, res) => {
+export let getSingleProductSupplier = async (req: Request, res: Response) => {
   try {
     const productSupplier = await ProductSupplier.findOne({
       where: {
@@ -46,7 +47,7 @@ exports.getSingleProductSupplier = async (req, res) => {
 // @desc Add Product Supplier
 // @route POST /productSupplier
 // @access Admin
-exports.addProductSupplier = async (req, res) => {
+export let addProductSupplier = async (req: Request, res: Response) => {
   try {
     const product = await Product.findOne({
       where: {
@@ -80,7 +81,7 @@ exports.addProductSupplier = async (req, res) => {
 // @desc Update Product Supplier
 // @route PUT /productSupplier/:id
 // @access Admin
-exports.updateProductSupplier = async (req, res) => {
+export let updateProductSupplier = async (req: Request, res: Response) => {
   try {
     await ProductSupplier.update(req.body, {
       where: {
@@ -97,7 +98,7 @@ exports.updateProductSupplier = async (req, res) => {
 // @desc Delete Product Supplier
 // @route DELETE /productSupplier/:id
 // @access Admin
-exports.deleteProductSupplier = async (req, res) => {
+export let deleteProductSupplier = async (req: Request, res: Response) => {
   try {
     await ProductSupplier.destroy({
       where: {

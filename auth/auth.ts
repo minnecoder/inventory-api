@@ -1,7 +1,7 @@
-const { genSalt, hash, compare } = require("bcryptjs")
-const User = require('../models/User')
+import { genSalt, hash, compare } from "bcryptjs"
+import { User } from '../models/User'
 
-exports.changePassword = async (userId, newPassword) => {
+exports.changePassword = async (userId: number, newPassword: string) => {
     try {
         // generate salt
         const salt = await genSalt(10)
@@ -21,7 +21,7 @@ exports.changePassword = async (userId, newPassword) => {
     }
 }
 
-exports.authorizeUser = async (email, password) => {
+exports.authorizeUser = async (email: string, password: string) => {
     const user = await User.findOne({
         where: {
             Email: email

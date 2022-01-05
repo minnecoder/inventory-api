@@ -1,11 +1,12 @@
-const ProductReview = require("../models/ProductReview")
-const Product = require('../models/Product')
-const User = require('../models/User')
+import { Request, Response } from "express"
+import ProductReview from "../models/ProductReview"
+import Product from "../models/Product"
+import User from "../models/User"
 
 // @desc Get all Product Reviews
 // @route GET /productreviews
 // @access User
-exports.getProductReviews = async (req, res) => {
+export let getProductReviews = async (req: Request, res: Response) => {
     try {
         const reviews = await ProductReview.findAll({
             include: [Product, User]
@@ -23,7 +24,7 @@ exports.getProductReviews = async (req, res) => {
 // @desc Add Product Review
 // @route POST /productreviews
 // @access Admin
-exports.addProductReview = async (req, res) => {
+export let addProductReview = async (req: Request, res: Response) => {
     try {
         const review = await ProductReview.create(req.body)
 
@@ -38,7 +39,7 @@ exports.addProductReview = async (req, res) => {
 
 // @route GET /productreviews/:id
 // @access User
-exports.getSingleProductReview = async (req, res) => {
+export let getSingleProductReview = async (req: Request, res: Response) => {
     try {
         const review = await ProductReview.findOne({
             where: {
@@ -63,7 +64,7 @@ exports.getSingleProductReview = async (req, res) => {
 // @desc Update Product Review
 // @route PUT /productreviews/:id
 // @access Admin
-exports.updateProductReview = async (req, res) => {
+export let updateProductReview = async (req: Request, res: Response) => {
     try {
         await ProductReview.update(req.body, {
             where: {
@@ -81,7 +82,7 @@ exports.updateProductReview = async (req, res) => {
 // @desc Delete Product Review
 // @route DELETE /productreviews/:id
 // @access Admin
-exports.deleteProductReview = async (req, res) => {
+export let deleteProductReview = async (req: Request, res: Response) => {
     try {
         await ProductReview.destroy({
             where: {

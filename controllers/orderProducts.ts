@@ -1,11 +1,12 @@
-const OrderProduct = require('../models/OrderProduct');
-const Order = require('../models/Order');
-const Product = require('../models/Product');
+import { Request, Response } from 'express';
+import OrderProduct from '../models/OrderProduct';
+import Order from '../models/Order';
+import Product from '../models/Product';
 
 // @desc get all orderProducts
 // @route GET /orderproducts
 // @access User
-exports.getOrderProducts = async (req, res) => {
+export let getOrderProducts = async (req: Request, res: Response) => {
   try {
     const orderProducts = await OrderProduct.findAll({
       include: [Order, Product],
@@ -23,7 +24,7 @@ exports.getOrderProducts = async (req, res) => {
 // @desc get all orderProducts
 // @route GET /orderproducts/:id
 // @access User
-exports.getSingleOrderProduct = async (req, res) => {
+export let getSingleOrderProduct = async (req: Request, res: Response) => {
   try {
     const orderProduct = await OrderProduct.findOne({
       where: {
@@ -47,7 +48,7 @@ exports.getSingleOrderProduct = async (req, res) => {
 // @desc add orderProduct
 // @route POST /orders
 // @access Admin
-exports.addOrderProduct = async (req, res) => {
+export let addOrderProduct = async (req: Request, res: Response) => {
   try {
     // Check if OrderId exists
     const order = await Order.findOne({
@@ -85,7 +86,7 @@ exports.addOrderProduct = async (req, res) => {
 // @desc Update OrderProduct
 // @route UPDATE /orderProducts/:id
 // @access Admin
-exports.updateOrderProduct = async (req, res) => {
+export let updateOrderProduct = async (req: Request, res: Response) => {
   try {
     await OrderProduct.update(req.body, {
       where: {
@@ -103,7 +104,7 @@ exports.updateOrderProduct = async (req, res) => {
 // @desc Delete OrderProduct
 // @route DELETE /orderProducts/:id
 // @access Admin
-exports.deleteOrderProduct = async (req, res) => {
+export let deleteOrderProduct = async (req: Request, res: Response) => {
   try {
     await OrderProduct.destroy({
       where: {

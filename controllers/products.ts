@@ -1,9 +1,10 @@
-const Product = require('../models/Product');
+import { Request, Response } from 'express';
+import Product from '../models/Product';
 
 // @desc Get Product
 // @route GET /products
 // @access User
-exports.getProducts = async (req, res) => {
+export let getProducts = async (req: Request, res: Response) => {
   try {
     const products = await Product.findAll({
       attributes: {
@@ -30,7 +31,7 @@ exports.getProducts = async (req, res) => {
 // @desc Get Single Product
 // @route GET /products/:id
 // @access User
-exports.getSingleProduct = async (req, res) => {
+export let getSingleProduct = async (req: Request, res: Response) => {
   try {
     const product = await Product.findOne({
       where: {
@@ -64,7 +65,7 @@ exports.getSingleProduct = async (req, res) => {
 // @desc Add Product
 // @route POST /products
 // @access Admin
-exports.addProduct = async (req, res) => {
+export let addProduct = async (req: Request, res: Response) => {
   try {
     const customer = await Product.create(req.body);
 
@@ -80,7 +81,7 @@ exports.addProduct = async (req, res) => {
 // @desc Update Product
 // @route UPDATE /products/:id
 // @access Admin
-exports.updateProduct = async (req, res) => {
+export let updateProduct = async (req: Request, res: Response) => {
   try {
     await Product.update(req.body, {
       where: {
@@ -98,7 +99,7 @@ exports.updateProduct = async (req, res) => {
 // @desc Delete Product
 // @route DELETE /products/:id
 // @access Admin
-exports.deleteProduct = async (req, res) => {
+export let deleteProduct = async (req: Request, res: Response) => {
   try {
     await Product.destroy({
       where: {

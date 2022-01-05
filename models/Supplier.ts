@@ -1,9 +1,9 @@
-const Sequelize = require('sequelize');
-const dbTest = require('../utils/dbConnection').getDB
+import Sequelize from 'sequelize';
+import { getDB } from '../utils/dbConnection'
 
-const db = dbTest()
+const db = getDB()
 
-const Supplier = db.define('Suppliers', {
+export const Supplier = db.define('Suppliers', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

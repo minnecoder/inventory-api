@@ -1,9 +1,10 @@
-const Supplier = require('../models/Supplier');
+import { Request, Response } from "express";
+import Supplier from "../models/Supplier";
 
 // @desc Get Supplier
 // @route GET /suppliers
 // @access User
-exports.getSuppliers = async (req, res) => {
+export let getSuppliers = async (req: Request, res: Response) => {
   try {
     const suppliers = await Supplier.findAll();
     return res.status(200).json({
@@ -19,7 +20,7 @@ exports.getSuppliers = async (req, res) => {
 // @desc Add Supplier
 // @route POST /suppliers
 // @access Admin
-exports.addSupplier = async (req, res) => {
+export let addSupplier = async (req: Request, res: Response) => {
   try {
     const supplier = await Supplier.create(req.body);
 
@@ -35,7 +36,7 @@ exports.addSupplier = async (req, res) => {
 // @desc Get Single Supplier
 // @route GET /suppliers/:id
 // @access User
-exports.getSingleSupplier = async (req, res) => {
+export let getSingleSupplier = async (req: Request, res: Response) => {
   try {
     const supplier = await Supplier.findOne({
       where: {
@@ -57,7 +58,7 @@ exports.getSingleSupplier = async (req, res) => {
 // @desc Update Supplier
 // @route UPDATE /suppliers/:id
 // @access Admin
-exports.updateSupplier = async (req, res) => {
+export let updateSupplier = async (req: Request, res: Response) => {
   try {
     await Supplier.update(req.body, {
       where: {
@@ -75,7 +76,7 @@ exports.updateSupplier = async (req, res) => {
 // @desc Delete Supplier
 // @route DELETE /Suppliers/:id
 // @access Admin
-exports.deleteSupplier = async (req, res) => {
+export let deleteSupplier = async (req: Request, res: Response) => {
   try {
     await Supplier.destroy({
       where: {

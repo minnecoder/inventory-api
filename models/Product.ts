@@ -3,7 +3,7 @@ const dbTest = require('../utils/dbConnection').getDB
 
 const db = dbTest()
 
-const Product = db.define('Products', {
+export const Product = db.define('Products', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

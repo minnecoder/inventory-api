@@ -1,12 +1,13 @@
-const Order = require('../models/Order');
-const OrderProduct = require('../models/OrderProduct');
-const Customer = require('../models/Customer');
-const Product = require('../models/Product');
+import { Request, Response } from "express";
+import Order from "../models/Order";
+import OrderProduct from "../models/OrderProduct";
+import Customer from "../models/Customer";
+import Product from "../models/Product";
 
 // @desc Get Orders
 // @route GET /orders
 // @access User
-exports.getOrders = async (req, res) => {
+export let getOrders = async (req: Request, res: Response) => {
   try {
     const orders = await Order.findAll();
     return res.status(200).json({
@@ -22,7 +23,7 @@ exports.getOrders = async (req, res) => {
 // @desc Add Order
 // @route POST /orders
 // @access Admin
-exports.addOrder = async (req, res) => {
+export let addOrder = async (req: Request, res: Response) => {
   try {
     // Check if CustomerId exists
     const customer = await Customer.findOne({
@@ -100,7 +101,7 @@ exports.addOrder = async (req, res) => {
 // @desc Get Single Order
 // @route GET /orders/:id
 // @access User
-exports.getSingleOrder = async (req, res) => {
+export let getSingleOrder = async (req: Request, res: Response) => {
   try {
     const order = await Order.findOne({
       where: { OrderId: req.params.id },
@@ -141,7 +142,7 @@ exports.getSingleOrder = async (req, res) => {
 // @desc Update Order
 // @route PUT /orders/:id
 // @access Admin
-exports.updateOrder = async (req, res) => {
+export let updateOrder = async (req: Request, res: Response) => {
   try {
     await Order.update(req.body, {
       where: {
@@ -159,7 +160,7 @@ exports.updateOrder = async (req, res) => {
 // @desc Delete Order
 // @route DELETE /orders/:id
 // @access Admin
-exports.deleteOrder = async (req, res) => {
+export let deleteOrder = async (req: Request, res: Response) => {
   try {
     await Order.destroy({
       where: {
@@ -176,7 +177,7 @@ exports.deleteOrder = async (req, res) => {
 // @desc Update order statuses
 // @route Update /orders/status/:id
 // @access Admin
-exports.changeOrderStatus = async (req, res) => {
+export let changeOrderStatus = async (req: Request, res: Response) => {
   try {
     const order = await Order.findOne({
       where: {

@@ -1,11 +1,12 @@
-const express = require("express")
-const {
+import express from 'express'
+
+import {
     getProductReviews,
     addProductReview,
     getSingleProductReview,
     updateProductReview,
     deleteProductReview
-} = require("../controllers/productReview")
+} from "../controllers/productReview"
 
 const router = express.Router()
 

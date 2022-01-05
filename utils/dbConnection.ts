@@ -1,18 +1,18 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 
 dotenv.config({ path: './config/config.env' });
-const db = require('../config/postgres-db');
+import db from '../config/postgres-db';
 
-function initDB() {
+export function initDB() {
     db.authenticate()
         .then(() => console.log('Database connected...'))
-        .catch((error) => {
+        .catch((error: string) => {
             console.log('Error: ', error);
         });
     return db
 }
 
-function getDB() {
+export function getDB() {
     // initDB()
     if (!db) {
         console.error('Database not connected')
@@ -22,7 +22,7 @@ function getDB() {
 }
 
 
-module.exports = {
-    initDB,
-    getDB
-}
+// module.exports = {
+//     initDB,
+//     getDB
+// }

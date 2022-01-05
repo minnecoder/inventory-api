@@ -1,6 +1,7 @@
-const jwt = require('jsonwebtoken')
+import { Request, Response, NextFunction } from 'express'
+import jwt from 'jsonwebtoken'
 
-exports.jwtAuth = async (req, res, next) => {
+exports.jwtAuth = async (req: Request, res: Response, next: NextFunction) => {
     const JWTSignature = process.env.JWT_SECRET
 
     try {

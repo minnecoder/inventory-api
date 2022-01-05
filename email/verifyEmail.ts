@@ -1,9 +1,9 @@
-const crypto = require('crypto')
-const User = require('../models/User')
+import crypto from 'crypto'
+// import User from '../models/User'
 
 const { ROOT_DOMAIN, JWT_SIGNATURE } = process.env
 
-exports.createVerifyEmailToken = async (email) => {
+export const createVerifyEmailToken = async (email: string) => {
     try {
         const authString = `${JWT_SIGNATURE}:${email}`
         return crypto.createHash('sha256').update(authString).digest('hex')
@@ -12,10 +12,10 @@ exports.createVerifyEmailToken = async (email) => {
     }
 }
 
-exports.createVerifyEmailLink = async (email) => {
+export const createVerifyEmailLink = async (email: string) => {
     try {
         // Create token
-        const emailToken = await this.createVerifyEmailToken(email)
+        const emailToken = await createVerifyEmailToken(email)
         // Encode url string
         const URIencodedEmail = encodeURIComponent(email)
         // Return verification link

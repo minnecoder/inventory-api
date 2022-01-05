@@ -1,11 +1,11 @@
-const Sequelize = require('sequelize');
-const dbTest = require('../utils/dbConnection').getDB
+import Sequelize from 'sequelize';
+import { getDB } from '../utils/dbConnection'
+import { Order } from './Order';
+import { Product } from './Product';
 
-const db = dbTest()
-const Order = require('./Order');
-const Product = require('./Product');
+const db = getDB()
 
-const OrderProduct = db.define('Order_Products', {
+export const OrderProduct = db.define('Order_Products', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

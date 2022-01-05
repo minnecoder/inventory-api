@@ -1,9 +1,9 @@
-const Sequelize = require('sequelize')
-const dbTest = require('../utils/dbConnection').getDB
+import Sequelize from 'sequelize'
+import { getDB } from '../utils/dbConnection'
 
-const db = dbTest()
+const db = getDB()
 
-const Session = db.define('Sessions', {
+export const Session = db.define('Sessions', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,

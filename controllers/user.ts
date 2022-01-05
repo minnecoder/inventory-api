@@ -1,19 +1,20 @@
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const { createSession } = require('../tokens/createSession')
-const { refreshTokens } = require('../tokens/refreshToken')
-const Session = require('../models/Session')
-const User = require("../models/User")
-const { createVerifyEmailLink, createVerifyEmailToken } = require('../email/verifyEmail')
-const sendEmail = require('../email/email')
-const getUserFromCookies = require('../tokens/getUserFromCookies')
-const { authorizeUser, changePassword } = require('../auth/auth')
+import { Request, Response } from 'express'
+import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
+import { createSession } from '../tokens/createSession'
+import { refreshToken } from '../tokens/refreshToken'
+import { Session } from '../models/Session'
+import { User } from '../models/User'
+import { createVerifyEmailLink, createVerifyEmailToken } from '../email/verifyEmail'
+import sendEmail from '../email/email'
+import { getUserFromCookies } from '../tokens/getUserFromCookies'
+import { authorizeUser, changePassword } from '../auth/auth'
 
 
 // @desc Add user
 // @route POST /user
 // @access User
-exports.registerUser = async (req, res) => {
+export let registerUser = async (req: Request, res: Response) => {
     // Check if email already exists
     const email = await User.findOne({
         where: {
@@ -62,7 +63,7 @@ exports.registerUser = async (req, res) => {
 // @desc Add admin user
 // @route POST /user/addadmin
 // @access Admin
-exports.registerAdminUser = async (req, res) => {
+export let registerAdminUser = async (req: Request, res: Response) => {
     // Check if email already exists
     const email = await User.findOne({
         where: {
@@ -110,7 +111,7 @@ exports.registerAdminUser = async (req, res) => {
 // @desc Log in user
 // @route POST /user/login
 // @access User
-exports.loginUser = async (req, res) => {
+export let loginUser = async (req: Request, res: Response) => {
     try {
         // Check if email exists
         const user = await User.findOne({
@@ -143,7 +144,7 @@ exports.loginUser = async (req, res) => {
         const sessionToken = await createSession(userId, connectionInfo)
 
         // Create access token and refresh token
-        await refreshTokens(sessionToken, userId, role, res)
+        await refreshToken(sessionToken, userId, role, res)
 
         return res.sendStatus(200)
     } catch (error) {
@@ -156,7 +157,7 @@ exports.loginUser = async (req, res) => {
 // @desc Users
 // @route GET /user
 // @access Admin
-exports.getUsers = async (req, res) => {
+export let getUsers = async (req: Request, res: Response) => {
     try {
         const users = await User.find()
         return res.status(200).json({
@@ -173,7 +174,7 @@ exports.getUsers = async (req, res) => {
 // @desc Get single user
 // @route GET /user/:id
 // @access Admin
-exports.getSingleUser = async (req, res) => {
+export let getSingleUser = async (req: Request, res: Response) => {
     try {
         const user = await User.findOne({
             where: {
@@ -197,7 +198,7 @@ exports.getSingleUser = async (req, res) => {
 // @desc Update User
 // @route PUT /users/:id
 // @access Admin
-exports.updateUser = async (req, res) => {
+export let updateUser = async (req: Request, res: Response) => {
     try {
         await User.update(req.body, {
             where: {
@@ -214,7 +215,7 @@ exports.updateUser = async (req, res) => {
 // @desc Delete User
 // @route DELETE /users/:id
 // @access Admin
-exports.deleteUser = async (req, res) => {
+export let deleteUser = async (req: Request, res: Response) => {
     try {
         await User.destroy({
             where: {
@@ -232,7 +233,7 @@ exports.deleteUser = async (req, res) => {
 // @desc Logout User
 // @route POST /users/logout
 // @access User
-exports.logoutUser = async (req, res) => {
+export let logoutUser = async (req: Request, res: Response) => {
     const JWTSignature = process.env.JWT_SECRET
     try {
         if (req.cookies.refreshToken) {
@@ -261,7 +262,7 @@ exports.logoutUser = async (req, res) => {
 // @desc Change Password
 // @route POST /users/changepassword
 // @access User
-exports.changePassword = async (req, res) => {
+export let changePassword = async (req: Request, res: Response) => {
     try {
         const { oldPassword, newPassword } = req.body
 
@@ -286,7 +287,7 @@ exports.changePassword = async (req, res) => {
 // @desc Validate Email Link
 // @route POST /users/validateemail
 // @access User
-exports.validateEmail = async (req, res) => {
+export let validateEmail = async (req: Request, res: Response) => {
     try {
         const { email, token } = req.body
         // Create hash

@@ -1,6 +1,6 @@
-const express = require("express")
+import express from "express"
 
-const {
+import {
     registerUser,
     registerAdminUser,
     loginUser,
@@ -11,8 +11,8 @@ const {
     logoutUser,
     changePassword,
     validateEmail
-} = require("../controllers/user")
-const { createVerifyEmailLink } = require("../email/verifyEmail")
+} from "../controllers/user"
+import { createVerifyEmailLink } from "../email/verifyEmail"
 
 const router = express.Router()
 

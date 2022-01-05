@@ -1,9 +1,10 @@
-const Customer = require('../models/Customer');
+import { Request, Response } from "express";
+import Customer from "../models/Customer";
 
 // @desc Get Customers
 // @route GET /customers
 // @access User
-exports.getCustomers = async (req, res) => {
+export let getCustomers = async (req: Request, res: Response) => {
   try {
     const customers = await Customer.findAll();
     return res.status(200).json({
@@ -19,7 +20,7 @@ exports.getCustomers = async (req, res) => {
 // @desc Get Single Customers
 // @route GET /customers/:id
 // @access User
-exports.getSingleCustomer = async (req, res) => {
+export let getSingleCustomer = async (req: Request, res: Response) => {
   try {
     const customer = await Customer.findOne({
       where: {
@@ -42,7 +43,7 @@ exports.getSingleCustomer = async (req, res) => {
 // @desc Add Customer
 // @route POST /customers
 // @access Admin
-exports.addCustomer = async (req, res) => {
+export let addCustomer = async (req: Request, res: Response) => {
   try {
     const customer = await Customer.create(req.body);
 
@@ -55,7 +56,7 @@ exports.addCustomer = async (req, res) => {
   }
 };
 
-exports.updateCustomer = async (req, res) => {
+export let updateCustomer = async (req: Request, res: Response) => {
   try {
     await Customer.update(req.body, {
       where: {
@@ -73,7 +74,7 @@ exports.updateCustomer = async (req, res) => {
 // @desc Delete Customer
 // @route DELETE /customers/:id
 // @access Admin
-exports.deleteCustomer = async (req, res) => {
+export let deleteCustomer = async (req: Request, res: Response) => {
   try {
     await Customer.destroy({
       where: {
@@ -87,7 +88,7 @@ exports.deleteCustomer = async (req, res) => {
   }
 };
 
-exports.findCustomersByName = async (req, res) => {
+export let findCustomersByName = async (req: Request, res: Response) => {
   try {
     const customers = await Customer.findAll({
       where: {
