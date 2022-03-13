@@ -11,6 +11,7 @@ exports.jwtAuth = async (req: Request, res: Response, next: NextFunction) => {
             // Decode accessToken
             const decodedAccessToken = jwt.verify(accessToken, JWTSignature)
             // Check if user has the role of admin
+            // @ts-ignore
             if (decodedAccessToken.role === "admin") {
                 next()
                 return

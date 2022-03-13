@@ -140,8 +140,9 @@ class UserController {
 
             // Verify user login
             const user = await getUserFromCookies(req, res)
-
+            // @ts-ignore
             if (user?.email) {
+                // @ts-ignore
                 const { isAuthorized, userId } = await authorizeUser(user.email, oldPassword)
                 if (isAuthorized) {
                     await this.UserService.updateUser(userId, newPassword)

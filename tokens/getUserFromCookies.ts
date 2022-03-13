@@ -20,6 +20,7 @@ const getUserFromCookies = async (req: Request, res: Response) => {
             // Return user
             return User.findOne({
                 where: {
+                    // @ts-ignore
                     id: decodedAccessToken?.userId
                 }
             })
@@ -43,6 +44,7 @@ const getUserFromCookies = async (req: Request, res: Response) => {
                         id: currentSession.userId
                     }
                 })
+                // @ts-ignore
                 await refreshTokens(sessionToken, currentUser.id, role, res)
                 // Return current user
                 return currentUser
