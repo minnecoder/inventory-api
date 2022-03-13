@@ -4,7 +4,9 @@
   "description": "Inventory API ",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node build/server.js",
+    "tsc": "tsc && tsc-alias",
+    "postinstall": "npm run tsc",
     "dev": "nodemon index.js",
     "swagger": "swagger-cli bundle -o ./swagger/swagger-compiled.json ./swagger/swagger.json",
     "dev-ts": "ts-node-dev --respawn --transpile-only server.ts",
@@ -50,6 +52,7 @@
     "nodemon": "^2.0.3",
     "prettier": "^2.0.5",
     "ts-node-dev": "^1.1.8",
+    "tsc-alias": "^1.6.4",
     "typescript": "^4.5.4"
   }
 }
