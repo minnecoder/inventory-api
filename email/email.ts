@@ -1,6 +1,11 @@
 const nodemailer = require('nodemailer')
 
-async function sendEmail(data) {
+interface Email {
+    to: string
+    subject: string
+    html: string
+}
+async function sendEmail(data: Email) {
     const { to, subject, html } = data
     const { EMAIL_USER, EMAIL_PWD, OAUTH_CLIENTID, OAUTH_CLIENT_SECRET, OAUTH_REFRESH_TOKEN } = process.env
 
@@ -24,7 +29,7 @@ async function sendEmail(data) {
         html
     }
 
-    transporter.sendMail(mailOptions, (err, info) => {
+    transporter.sendMail(mailOptions, (err: string, info: string) => {
         if (err)
             console.log(err)
         else
