@@ -17,6 +17,10 @@ const getUserFromCookies = async (req: Request, res: Response) => {
             // Decode access token
             const decodedAccessToken = jwt.verify(accessToken, JWTSignature)
             console.log(decodedAccessToken)
+
+            console.log(decodedAccessToken)
+
+
             // Return user
             return User.findOne({
                 where: {
@@ -35,6 +39,9 @@ const getUserFromCookies = async (req: Request, res: Response) => {
                     sessionToken: sessionToken
                 }
             })
+
+            console.log(refreshToken)
+            console.log(currentSession)
 
             // Confirm session is valid
             if (currentSession.valid) {
