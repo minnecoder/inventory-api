@@ -1,8 +1,7 @@
-import { IsDecimal, IsInt, IsString } from "class-validator";
+import { IsDecimal, IsInt, IsNumber, IsString } from "class-validator";
 
 export class CreateProductDTO {
-    @IsInt()
-    public id: number
+
 
     @IsString()
     public productName: string
