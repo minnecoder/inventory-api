@@ -18,8 +18,8 @@ export class CreateSupplierDTO {
     @IsString()
     public supplierZip: string
 
-    @IsPhoneNumber()
-    public supplierPhone: number
+    @IsString()
+    public supplierPhone: string
 
     @IsEmail()
     public supplierEmail: string

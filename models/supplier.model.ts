@@ -8,7 +8,7 @@ class Suppliers extends Model<Supplier> implements Suppliers {
   declare supplierCity: string
   declare supplierState: string
   declare supplierZip: string
-  declare supplierPhone: number
+  declare supplierPhone: string
   declare supplierEmail: string
 }
 

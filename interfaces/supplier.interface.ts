@@ -5,6 +5,6 @@ export interface Supplier {
     supplierCity: string
     supplierState: string
     supplierZip: string
-    supplierPhone: number
+    supplierPhone: string
     supplierEmail: string
 }
