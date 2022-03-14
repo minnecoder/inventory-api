@@ -1,4 +1,5 @@
 export interface Product {
+    id?: number
     productName: string
     productDesc: string
     productCost: number

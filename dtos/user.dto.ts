@@ -1,7 +1,6 @@
 import { IsBoolean, IsEmail, IsInt, IsString } from "class-validator";
 
 export class CreateUserDTO {
-    @IsInt()
     public id: number
 
     @IsString()

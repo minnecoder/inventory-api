@@ -1,7 +1,6 @@
 import { IsEmail, IsInt, IsPhoneNumber, IsString } from "class-validator";
 
 export class CreateSupplierDTO {
-    @IsInt()
     public id: number
 
     @IsString()

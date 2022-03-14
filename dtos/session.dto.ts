@@ -1,7 +1,6 @@
 import { IsBoolean, IsInt, IsString } from "class-validator";
 
 export class CreateSessionDTO {
-    @IsInt()
     public id: number
 
     @IsString()

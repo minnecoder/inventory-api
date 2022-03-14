@@ -14,6 +14,11 @@ class Products extends Model<Product> implements Products {
 
 export default function (sequelize: Sequelize): typeof Products {
   Products.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     productName: {
       type: DataTypes.STRING,
     },

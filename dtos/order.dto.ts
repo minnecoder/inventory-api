@@ -1,7 +1,6 @@
 import { IsDecimal, IsInt, IsString } from "class-validator";
 
 export class CreateOrderDTO {
-    @IsInt()
     public id: number
 
     @IsInt()

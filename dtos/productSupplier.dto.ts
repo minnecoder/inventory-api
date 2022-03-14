@@ -1,7 +1,6 @@
 import { IsInt, IsString } from "class-validator";
 
 export class CreateProductSupplierDTO {
-    @IsInt()
     public id: number
 
     @IsInt()

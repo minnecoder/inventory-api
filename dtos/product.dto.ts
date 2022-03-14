@@ -1,7 +1,7 @@
 import { IsDecimal, IsInt, IsNumber, IsString } from "class-validator";
 
 export class CreateProductDTO {
-
+    public id: number
 
     @IsString()
     public productName: string

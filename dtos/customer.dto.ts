@@ -1,7 +1,7 @@
 import { IsEmail, IsInt, IsPhoneNumber, IsString } from "class-validator";
 
 export class CreateCustomerDTO {
-    @IsInt()
+
     public id: number
 
     @IsString()
