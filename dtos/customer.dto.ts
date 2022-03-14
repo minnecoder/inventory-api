@@ -19,7 +19,7 @@ export class CreateCustomerDTO {
     @IsString()
     public customerZip: string
 
-    @IsString()
+    @IsPhoneNumber()
     public customerPhone: number
 
     @IsEmail()
