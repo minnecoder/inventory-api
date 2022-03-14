@@ -8,7 +8,7 @@ class Customers extends Model<Customer> implements Customer {
   declare customerCity: string
   declare customerState: string
   declare customerZip: string
-  declare customerPhone: number
+  declare customerPhone: string
   declare customerEmail: string
 }
 

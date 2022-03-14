@@ -5,6 +5,6 @@ export interface Customer {
     customerCity: string
     customerState: string
     customerZip: string
-    customerPhone: number
+    customerPhone: string
     customerEmail: string
 }
