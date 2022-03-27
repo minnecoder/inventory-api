@@ -895,15 +895,15 @@
     },
     "/productSuppliers": {
       "get": {
-        "summary": "Returns all order products",
-        "description": "Returns all order products",
+        "summary": "Returns all product suppliers",
+        "description": "Returns all product suppliers",
         "operationId": "getProductSuppliers",
         "tags": [
           "Product Suppliers"
         ],
         "responses": {
           "200": {
-            "description": "A list of order products",
+            "description": "A list of product suppliers",
             "content": {
               "application/json": {
                 "schema": {
@@ -918,8 +918,8 @@
         }
       },
       "post": {
-        "summary": "Create a new order product",
-        "description": "Create a new order product",
+        "summary": "Create a new product supplier",
+        "description": "Create a new product supplier",
         "operationId": "addOrderProduct",
         "tags": [
           "Product Suppliers"
@@ -928,7 +928,7 @@
           {
             "in": "path",
             "name": "body",
-            "description": "Order product object to add",
+            "description": "Product supplier object to add",
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/Product%20Supplier"
@@ -937,7 +937,7 @@
         ],
         "responses": {
           "200": {
-            "description": "New order product is created",
+            "description": "New product supplier is created",
             "content": {
               "application/json": {
                 "schema": {
