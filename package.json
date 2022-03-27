@@ -7,9 +7,8 @@
     "start": "node build/server.js",
     "tsc": "tsc && tsc-alias",
     "postinstall": "npm run tsc",
-    "dev": "nodemon index.js",
+    "dev": "ts-node-dev --respawn --transpile-only server.ts",
     "swagger": "swagger-cli bundle -o ./swagger/swagger-compiled.json ./swagger/swagger.json",
-    "dev-ts": "ts-node-dev --respawn --transpile-only server.ts",
     "type-check": "tsc --noEmit"
   },
   "author": "Sean Parkin",
