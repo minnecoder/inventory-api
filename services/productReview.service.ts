@@ -25,6 +25,14 @@ class ProductReviewService {
 
         if (findProductReview) throw new AlreadyExists('ProductReview')
 
+        // Check if productId is valid
+        const findProduct: ProductReview = await this.ProductReview.findOne({ where: { id: ProductReviewData.productId } })
+        if (!findProduct) throw new NotFound('Product')
+
+        // Check if userId is valid
+        const findUser: ProductReview = await this.ProductReview.findOne({ where: { id: ProductReviewData.userId } })
+        if (!findUser) throw new NotFound('User')
+
         const createdProductReviewData: ProductReview = await this.ProductReview.create({ ...ProductReviewData })
 
         return createdProductReviewData
@@ -34,6 +42,14 @@ class ProductReviewService {
         const findProductReview: ProductReview = await this.ProductReview.findOne({ where: { id: ProductReviewData.id } })
 
         if (!findProductReview) throw new NotFound('ProductReview')
+
+        // Check if productId is valid
+        const findProduct: ProductReview = await this.ProductReview.findOne({ where: { id: ProductReviewData.productId } })
+        if (!findProduct) throw new NotFound('Product')
+
+        // Check if userId is valid
+        const findUser: ProductReview = await this.ProductReview.findOne({ where: { id: ProductReviewData.userId } })
+        if (!findUser) throw new NotFound('User')
 
         await this.ProductReview.update({ ...ProductReviewData }, { where: { id: ProductReviewId } })
 

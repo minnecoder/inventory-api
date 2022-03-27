@@ -23,6 +23,14 @@ class OrderProductService {
     public async createOrderProduct(OrderProductData: CreateOrderProductDTO): Promise<OrderProduct> {
         const findOrderProduct: OrderProduct = await this.OrderProduct.findOne({ where: { id: OrderProductData.id } })
 
+        // Check if orderId is valid
+        const findOrder: OrderProduct = await this.OrderProduct.findOne({ where: { id: OrderProductData.orderId } })
+        if (!findOrder) throw new NotFound('Order')
+
+        // Check if productId is valid
+        const findProduct: OrderProduct = await this.OrderProduct.findOne({ where: { id: OrderProductData.productId } })
+        if (!findProduct) throw new NotFound('Product')
+
         if (findOrderProduct) throw new AlreadyExists('OrderProduct')
 
         const createdOrderProductData: OrderProduct = await this.OrderProduct.create({ ...OrderProductData })
@@ -34,6 +42,14 @@ class OrderProductService {
         const findOrderProduct: OrderProduct = await this.OrderProduct.findOne({ where: { id: OrderProductData.id } })
 
         if (!findOrderProduct) throw new NotFound('OrderProduct')
+
+        // Check if orderId is valid
+        const findOrder: OrderProduct = await this.OrderProduct.findOne({ where: { id: OrderProductData.orderId } })
+        if (!findOrder) throw new NotFound('Order')
+
+        // Check if productId is valid
+        const findProduct: OrderProduct = await this.OrderProduct.findOne({ where: { id: OrderProductData.productId } })
+        if (!findProduct) throw new NotFound('Product')
 
         await this.OrderProduct.update({ ...OrderProductData }, { where: { id: OrderProductId } })
 

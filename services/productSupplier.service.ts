@@ -25,6 +25,14 @@ class ProductSupplierService {
 
         if (findProductSupplier) throw new AlreadyExists('ProductSupplier')
 
+        // Check if productId is valid
+        const findProduct: ProductSupplier = await this.ProductSupplier.findOne({ where: { id: ProductSupplierData.productId } })
+        if (!findProduct) throw new NotFound('Product')
+
+        // Check if supplierId is valid
+        const findSupplier: ProductSupplier = await this.ProductSupplier.findOne({ where: { id: ProductSupplierData.supplierId } })
+        if (!findSupplier) throw new NotFound('Supplier')
+
         const createdProductSupplierData: ProductSupplier = await this.ProductSupplier.create({ ...ProductSupplierData })
 
         return createdProductSupplierData
@@ -34,6 +42,14 @@ class ProductSupplierService {
         const findProductSupplier: ProductSupplier = await this.ProductSupplier.findOne({ where: { id: ProductSupplierData.id } })
 
         if (!findProductSupplier) throw new NotFound('ProductSupplier')
+
+        // Check if productId is valid
+        const findProduct: ProductSupplier = await this.ProductSupplier.findOne({ where: { id: ProductSupplierData.productId } })
+        if (!findProduct) throw new NotFound('Product')
+
+        // Check if supplierId is valid
+        const findSupplier: ProductSupplier = await this.ProductSupplier.findOne({ where: { id: ProductSupplierData.supplierId } })
+        if (!findSupplier) throw new NotFound('Supplier')
 
         await this.ProductSupplier.update({ ...ProductSupplierData }, { where: { id: ProductSupplierId } })
 
