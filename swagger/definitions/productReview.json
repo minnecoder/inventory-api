@@ -8,18 +8,18 @@
             "type": "integer",
             "format": "int32"
         },
-        "ProductId": {
+        "productId": {
             "type": "integer",
             "format": "int32"
         },
-        "UserId": {
+        "userId": {
             "type": "integer",
             "format": "int32"
         },
-        "Rating": {
+        "rating": {
             "type": "float"
         },
-        "Review_Text": {
+        "reviewText": {
             "type": "string"
         },
         "createdAt": {

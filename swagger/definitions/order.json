@@ -8,18 +8,18 @@
             "type": "integer",
             "format": "int32"
         },
-        "OrderId": {
+        "orderId": {
             "type": "integer",
             "format": "int32"
         },
-        "CustomerId": {
+        "customerId": {
             "type": "integer",
             "format": "int32"
         },
-        "Order_Status": {
+        "orderStatus": {
             "type": "string"
         },
-        "Order_Total": {
+        "orderTotal": {
             "type": "integer",
             "format": "float"
         },

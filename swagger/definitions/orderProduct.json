@@ -8,15 +8,18 @@
             "type": "integer",
             "format": "int32"
         },
-        "OrderId": {
+        "orderId": {
             "type": "integer"
         },
-        "ProductId": {
+        "productId": {
             "type": "integer"
         },
-        "Quantity_Ordered": {
+        "quantityOrdered": {
             "type": "integer",
             "format": "int32"
+        },
+        "productStatus": {
+            "type": "string"
         },
         "createdAt": {
             "type": "string"

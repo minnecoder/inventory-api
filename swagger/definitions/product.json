@@ -8,29 +8,29 @@
             "type": "integer",
             "format": "int32"
         },
-        "Product_Name": {
+        "productName": {
             "type": "string"
         },
-        "Product_Desc": {
+        "productDesc": {
             "type": "string"
         },
-        "Product_Cost": {
+        "productCost": {
             "type": "integer",
             "format": "float"
         },
-        "Product_Price": {
+        "productPrice": {
             "type": "integer",
             "format": "float"
         },
-        "On_Hand": {
+        "onHand": {
             "type": "integer",
             "format": "int32"
         },
-        "Reorder_Level": {
+        "reorderLevel": {
             "type": "integer",
             "format": "int32"
         },
-        "Reorder_Qty": {
+        "reorderQty": {
             "type": "integer",
             "format": "int32"
         },

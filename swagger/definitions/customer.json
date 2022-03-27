@@ -8,25 +8,25 @@
             "type": "integer",
             "format": "int32"
         },
-        "Customer_Name": {
+        "customerName": {
             "type": "string"
         },
-        "Customer_Address": {
+        "customerAddress": {
             "type": "string"
         },
-        "Customer_City": {
+        "customerCity": {
             "type": "string"
         },
-        "Customer_State": {
+        "customerState": {
             "type": "string"
         },
-        "Customer_Zip": {
+        "customerZip": {
             "type": "string"
         },
-        "Customer_Phone": {
+        "customerPhone": {
             "type": "string"
         },
-        "Customer_Email": {
+        "customerEmail": {
             "type": "string"
         },
         "createdAt": {

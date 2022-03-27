@@ -8,15 +8,15 @@
             "type": "integer",
             "format": "int32"
         },
-        "ProductId": {
+        "productId": {
             "type": "integer",
             "format": "int32"
         },
-        "SupplierId": {
+        "supplierId": {
             "type": "integer",
             "format": "int32"
         },
-        "Product_Supplier_Notes": {
+        "productSupplierNotes": {
             "type": "string"
         },
         "createdAt": {
