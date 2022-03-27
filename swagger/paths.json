@@ -40,14 +40,5 @@
     },
     "/suppliers/{id}": {
         "$ref": "./paths/suppliers/{id}.json"
-    },
-    "/users": {
-        "$ref": "./paths/users/users.json"
-    },
-    "/users/{id}": {
-        "$ref": "./paths/users/{id}.json"
-    },
-    "/users/login": {
-        "$ref": "./paths/users/login.json"
     }
 }

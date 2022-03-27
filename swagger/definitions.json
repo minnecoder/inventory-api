@@ -19,8 +19,5 @@
     },
     "Supplier": {
         "$ref": "./definitions/suppliers.json"
-    },
-    "User": {
-        "$ref": "./definitions/user.json"
     }
 }
