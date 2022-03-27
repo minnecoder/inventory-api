@@ -5,7 +5,7 @@
     },
     "servers": [
         {
-            "url": "https://inventory-backend-api.herokuapp.com"
+            "url": "https://inventory-backend-api.herokuapp.com/api/v1"
         }
     ],
     "paths": {
