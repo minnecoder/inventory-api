@@ -33,7 +33,8 @@ export default function (sequelize: Sequelize): typeof OrderProducts {
       type: DataTypes.INTEGER,
     },
     productStatus: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM('created', 'picked', 'rejected', 'shipped', 'delivered'),
+      defaultValue: 'created'
     }
   }, {
     sequelize,

@@ -24,7 +24,8 @@ export default function (sequelize: Sequelize): typeof Orders {
       allowNull: false
     },
     orderStatus: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM('created', 'picked', 'rejected', 'shipped', 'delivered'),
+      defaultValue: 'created',
       allowNull: false
     },
     orderTotal: {

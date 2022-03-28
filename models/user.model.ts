@@ -40,8 +40,8 @@ export default function (sequelize: Sequelize): typeof Users {
             allowNull: false
         },
         role: {
-            type: DataTypes.STRING,
-            defaultValue: "user"
+            type: DataTypes.ENUM("admin", "user", "customer"),
+            defaultValue: "customer"
         }
     }, {
         sequelize,
