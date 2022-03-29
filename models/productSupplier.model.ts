@@ -28,10 +28,8 @@ export default function (sequelize: Sequelize): typeof ProductSuppliers {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-
     productSupplierNotes: {
       type: DataTypes.STRING,
-      allowNull: false
     }
   }, {
     sequelize,
@@ -39,5 +37,4 @@ export default function (sequelize: Sequelize): typeof ProductSuppliers {
     timestamps: true
   })
   return ProductSuppliers
-
 }
