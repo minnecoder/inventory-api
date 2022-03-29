@@ -6,7 +6,6 @@ export class CreateOrderDTO {
     @IsInt()
     public customerId: number
 
-    @IsString()
     public orderStatus: string
 
     @IsDecimal()
