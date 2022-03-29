@@ -26,7 +26,6 @@ export default function (sequelize: Sequelize): typeof Orders {
     orderStatus: {
       type: DataTypes.ENUM('created', 'picked', 'shipped', 'delivered', 'rejected', 'backordered', 'returned', 'credited'),
       defaultValue: 'created',
-      allowNull: false
     },
     orderTotal: {
       type: DataTypes.FLOAT,
