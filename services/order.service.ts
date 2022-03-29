@@ -8,12 +8,20 @@ class OrderService {
     public Order = DB.Order
 
     public async findAllOrders(): Promise<Order[]> {
-        const allOrders: Order[] = await this.Order.findAll()
+        const allOrders: Order[] = await this.Order.findAll({
+            include: [
+                { model: DB.Customer, as: 'customer' },
+            ]
+        })
         return allOrders
     }
 
     public async findOrderById(OrderId: number): Promise<Order> {
-        const singleOrder: Order = await this.Order.findByPk(OrderId)
+        const singleOrder: Order = await this.Order.findOne({
+            where: { id: OrderId }, include: [{
+                model: DB.Customer, as: 'customer'
+            }]
+        })
 
         if (!singleOrder) throw new NotFound('Order')
 
