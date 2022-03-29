@@ -25,10 +25,6 @@ class ProductSupplierService {
     }
 
     public async createProductSupplier(ProductSupplierData: CreateProductSupplierDTO): Promise<ProductSupplier> {
-        const findProductSupplier: ProductSupplier = await this.ProductSupplier.findOne({ where: { id: ProductSupplierData.id } })
-
-        if (findProductSupplier) throw new AlreadyExists('ProductSupplier')
-
         // Check if productId is valid
         const findProduct: Product = await this.Product.findOne({ where: { id: ProductSupplierData.productId } })
         if (!findProduct) throw new NotFound('Product')

@@ -21,10 +21,6 @@ class OrderService {
     }
 
     public async createOrder(OrderData: CreateOrderDTO): Promise<Order> {
-        const findOrder: Order = await this.Order.findOne({ where: { id: OrderData.id } })
-
-        if (findOrder) throw new AlreadyExists('Order')
-
         const createdOrderData: Order = await this.Order.create({ ...OrderData })
 
         return createdOrderData
