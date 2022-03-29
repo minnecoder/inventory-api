@@ -23,17 +23,18 @@ export default function (sequelize: Sequelize): typeof OrderProducts {
     },
     orderId: {
       type: DataTypes.INTEGER,
-
+      allowNull: false
     },
     productId: {
       type: DataTypes.INTEGER,
-
+      allowNull: false
     },
     quantityOrdered: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     productStatus: {
-      type: DataTypes.ENUM('created', 'picked', 'rejected', 'shipped', 'delivered'),
+      type: DataTypes.ENUM('created', 'picked', 'shipped', 'delivered', 'rejected', 'backordered', 'returned', 'credited'),
       defaultValue: 'created'
     }
   }, {

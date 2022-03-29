@@ -21,26 +21,33 @@ export default function (sequelize: Sequelize): typeof Products {
     },
     productName: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     productDesc: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     productCost: {
       type: DataTypes.FLOAT,
+      allowNull: false
     },
     productPrice: {
       type: DataTypes.FLOAT,
+      allowNull: false
     },
     onHand: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     // When item hits this level a reorder is triggered
     reorderLevel: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     // The number of items to order during a reorder
     reorderQty: {
       type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,
