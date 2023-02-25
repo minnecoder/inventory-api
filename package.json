@@ -29,7 +29,7 @@
     "nodemailer": "^6.7.2",
     "path": "^0.12.7",
     "pg": "^8.0.3",
-    "sequelize": "^6.11.0",
+    "sequelize": "^6.29.0",
     "stripe": "^8.177.0",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6"
